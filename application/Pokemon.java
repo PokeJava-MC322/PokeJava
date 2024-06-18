@@ -5,32 +5,36 @@ abstract class Pokemon {
     protected TipoPokemon tipoPokemon;
     protected int nivel;
     protected int hp;
+    protected int poderAtaque;
 
     // CONSTRUTOR
-    public Pokemon(){}
-
-    public Pokemon(String nome, TipoPokemon tipoPokemon, int nivel, int hp) {
+    public Pokemon(String nome, TipoPokemon tipoPokemon, int nivel, int hp, int poderAtaque) {
         this.nome = nome;
         this.tipoPokemon = tipoPokemon;
         this.nivel = nivel;
         this.hp = hp;
+        this.poderAtaque = poderAtaque;
     }
 
     // GETTERS
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
 
-    public TipoPokemon getTipoPokemon(){
+    public TipoPokemon getTipoPokemon() {
         return tipoPokemon;
     }
 
-    public int getNivel(){
+    public int getNivel() {
         return nivel;
     }
 
-    public int getHp(){
+    public int getHp() {
         return hp;
+    }
+
+    public int getPoderAtaque() {
+        return poderAtaque;
     }
 
     // MÉTODOS ABSTRATOS
