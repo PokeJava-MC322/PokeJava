@@ -9,6 +9,7 @@ public class PokemonFogo extends Pokemon {
     // IMPLEMENTAÇÃO DO MÉTODO ABSTRATO
     public void atacar(Pokemon alvo) {
         int dano = this.poderAtaque;
+        System.out.println(this.nome + " ataca " + alvo.nome + ".");
 
         if (alvo.getTipoPokemon() == TipoPokemon.PLANTA) {
             System.out.println("Muito efetivo!");

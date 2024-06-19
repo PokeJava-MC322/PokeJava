@@ -9,6 +9,7 @@ public class PokemonNormal extends Pokemon {
     // IMPLEMENTAÇÃO DO MÉTODO ABSTRATO
     public void atacar(Pokemon alvo) {
         int dano = this.poderAtaque;
+        System.out.println(this.nome + " ataca " + alvo.nome + ".");
         alvo.hp -= dano;
         System.out.println(alvo.nome + " levou " + dano + " de dano.");
     }

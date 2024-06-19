@@ -9,6 +9,7 @@ public class PokemonPlanta extends Pokemon {
     // IMPLEMENTAÇÃO DO MÉTODO ABSTRATO
     public void atacar(Pokemon alvo) {
         int dano = this.poderAtaque;
+        System.out.println(this.nome + " ataca " + alvo.nome + ".");
 
         if (alvo.getTipoPokemon() == TipoPokemon.AGUA) {
             System.out.println("Muito efetivo!");

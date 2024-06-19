@@ -2,17 +2,18 @@ package application;
 
 public class Main {
     public static void main(String[] args) {
-        // TESTE DOS POKEMONS (apagar depois)
-        PokemonFogo charmander = new PokemonFogo("Charmander", TipoPokemon.FOGO, 0, 39, 10);
-        PokemonPlanta bellsprout = new PokemonPlanta("Bellsprout", TipoPokemon.PLANTA, 0, 50, 10);
+        // TESTANDO POKEMONS (apagar depois)
+        PokemonFactory factory = new ConcretePokemonFactory();
 
-        charmander.atacar(bellsprout);
-        bellsprout.atacar(charmander);
-        System.out.println(charmander);
+        Pokemon squirtle = factory.criarPokemon("Squirtle", TipoPokemon.AGUA, 0, 40, 10);
+        Pokemon chimchar = factory.criarPokemon("Chimchar", TipoPokemon.FOGO, 0, 35, 10);
+        Pokemon turtwig = factory.criarPokemon("Turtwig", TipoPokemon.PLANTA, 0, 30, 10);
 
-        EquipePokemon equipe = new EquipePokemon(3, charmander);
-        equipe.adicionarPokemon(bellsprout);
-        equipe.setPokemonAtivo(bellsprout);
-        System.out.println(equipe);
+        EquipePokemon equipe = new EquipePokemon(3, squirtle);
+        equipe.adicionarPokemon(chimchar);
+        equipe.adicionarPokemon(turtwig);
+        System.out.println("\n" + equipe);
+
+        turtwig.atacar(chimchar);
     }
 }
