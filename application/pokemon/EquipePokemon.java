@@ -14,6 +14,7 @@ public class EquipePokemon {
         this.equipe = new ArrayList<>();
         this.equipe.add(pokemonAtivo);
         this.pokemonAtivo = pokemonAtivo;
+        System.out.println(pokemonAtivo.getNome() + " foi adicionado à equipe.");
     }
 
     // GETTERS
