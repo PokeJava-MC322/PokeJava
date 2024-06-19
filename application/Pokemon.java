@@ -39,4 +39,14 @@ abstract class Pokemon {
 
     // MÉTODOS ABSTRATOS
     public void atacar(Pokemon alvo){}
+
+    // IMPRESSÃO
+    @Override
+    public String toString() {
+        return "Nome: " + nome +
+               ", Tipo: " + tipoPokemon +
+               ", Nível: " + nivel +
+               ", HP: " + hp +
+               ", Poder de Ataque: " + poderAtaque;
+    }
 }
