@@ -1,5 +1,11 @@
 package application;
 
+import application.pokemon.ConcretePokemonFactory;
+import application.pokemon.EquipePokemon;
+import application.pokemon.Pokemon;
+import application.pokemon.PokemonFactory;
+import application.pokemon.TipoPokemon;
+
 public class Main {
     public static void main(String[] args) {
         // TESTANDO POKEMONS (apagar depois)

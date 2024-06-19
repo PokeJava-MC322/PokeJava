@@ -1,6 +1,6 @@
-package application;
+package application.pokemon;
 
-class ConcretePokemonFactory implements PokemonFactory {
+public class ConcretePokemonFactory implements PokemonFactory {
     @Override
     public Pokemon criarPokemon(String nome, TipoPokemon tipoPokemon, int nivel, int hp, int poderAtaque) {
         switch (tipoPokemon) {

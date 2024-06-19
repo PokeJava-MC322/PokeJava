@@ -1,6 +1,6 @@
-package application;
+package application.pokemon;
 
-abstract class Pokemon {
+public abstract class Pokemon {
     protected String nome;
     protected TipoPokemon tipoPokemon;
     protected int nivel;

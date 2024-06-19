@@ -1,8 +1,8 @@
-package application;
+package application.pokemon;
 
-public class PokemonPlanta extends Pokemon {
+public class PokemonAgua extends Pokemon {
     // CONSTRUTOR
-    public PokemonPlanta(String nome, TipoPokemon tipoPokemon, int nivel, int hp, int poderAtaque) {
+    public PokemonAgua(String nome, TipoPokemon tipoPokemon, int nivel, int hp, int poderAtaque) {
         super(nome, tipoPokemon, nivel, hp, poderAtaque);
     }
 
@@ -11,11 +11,11 @@ public class PokemonPlanta extends Pokemon {
         int dano = this.poderAtaque;
         System.out.println(this.nome + " ataca " + alvo.nome + ".");
 
-        if (alvo.getTipoPokemon() == TipoPokemon.AGUA) {
+        if (alvo.getTipoPokemon() == TipoPokemon.FOGO) {
             System.out.println("Muito efetivo!");
             dano *= 2;
         }
-        else if (alvo.getTipoPokemon() == TipoPokemon.FOGO) {
+        else if (alvo.getTipoPokemon() == TipoPokemon.PLANTA) {
             System.out.println("Pouco efetivo.");
             dano /= 2;
         }

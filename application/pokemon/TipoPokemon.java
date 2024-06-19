@@ -1,4 +1,4 @@
-package application;
+package application.pokemon;
 
 public enum TipoPokemon {
     AGUA,
