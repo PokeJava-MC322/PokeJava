@@ -19,8 +19,8 @@ public class LerItens implements I_Arquivo {
         List<Pocao> pocoes = new ArrayList<>();
 
         try {
-            File filePokeball = new File(jogo.getPath() + "Pokebolas.xml");
-            File filePocoes = new File(jogo.getPath() + "Pocoes.xml");
+            File filePokeball = new File(jogo.getDataPath() + "Pokebolas.xml");
+            File filePocoes = new File(jogo.getDataPath() + "Pocoes.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document docPokeball = dBuilder.parse(filePokeball);

@@ -22,7 +22,7 @@ public class LerPokemons implements I_Arquivo {
         PokemonFactory pokemonFactory = new ConcretePokemonFactory();
 
         try {
-            File file = new File(jogo.getPath() + "Pokedex.xml");
+            File file = new File(jogo.getDataPath() + "Pokedex.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
