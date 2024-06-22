@@ -4,7 +4,6 @@ import application.Jogo;
 import application.pokemon.ConcretePokemonFactory;
 import application.pokemon.PokemonFactory;
 import application.pokemon.Pokemon;
-import application.pokemon.PokemonFactory;
 import application.pokemon.TipoPokemon;
 
 import java.util.List;
