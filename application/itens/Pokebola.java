@@ -11,6 +11,13 @@ public class Pokebola extends Item {
         this.nome = nome;
         this.chanceCaptura = Math.min(100, chanceCaptura);
     }
+    public Pokebola(String nome, int chanceCaptura, int quantidade) {
+        this.nome = nome;
+        this.chanceCaptura = chanceCaptura;
+        this.quantidade = quantidade;
+    }
+
+    public int getChanceCaptura() { return this.chanceCaptura; }
 
     public void usarItem(Pokemon alvo) {
         Random rand = new Random();

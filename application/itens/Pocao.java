@@ -9,7 +9,14 @@ public class Pocao extends Item {
         this.nome = nome;
         this.cura = cura;
     }
+    public Pocao(String nome, int cura, int quantidade) {
+        this.nome = nome;
+        this.cura = cura;
+        this.quantidade = quantidade;
+    }
 
+    public int getCura() { return this.cura; }
+    
     public void usarItem(Pokemon alvo) {
         alvo.setHP(Math.min(alvo.getMaxHP(), alvo.getHP() + this.cura));
         return;
