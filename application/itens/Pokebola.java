@@ -20,6 +20,8 @@ public class Pokebola extends Item {
     public int getChanceCaptura() { return this.chanceCaptura; }
 
     public void usarItem(Pokemon alvo) {
+        if(this.quantidade <= 0)
+            return;
         Random rand = new Random();
         int chancePokebola = rand.nextInt(100);
 
@@ -30,6 +32,8 @@ public class Pokebola extends Item {
         } else {
             // Não captura
         }
+        
+        this.quantidade = this.quantidade - 1;
         return;
     }
 
