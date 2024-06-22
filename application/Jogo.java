@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Jogo {
     private List<Pokemon> pokedex;
-    private final String pokedexPATH = "../../../resource/data/Pokedex.xml";
+    private final String dataPath = "lerArquivos/../../../resource/data/";
 
     public void setPokedex(List<Pokemon> pokedex) { this.pokedex = pokedex; }
     public List<Pokemon> getPokedex() { return this.pokedex; }
-    public String getPokedexPath() { return this.pokedexPATH; }
+    public String getPath() { return this.dataPath; }
 }

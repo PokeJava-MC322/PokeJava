@@ -17,12 +17,12 @@ import org.w3c.dom.Element;
 
 public class LerPokemons implements I_Arquivo {
     @Override
-    public void lerArquivo(Jogo jogo, String path) {
+    public void lerArquivo(Jogo jogo) {
         List<Pokemon> pokedex = new ArrayList<>();
         PokemonFactory pokemonFactory = new ConcretePokemonFactory();
 
         try {
-            File file = new File(path);
+            File file = new File(jogo.getPath() + "Pokedex.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);

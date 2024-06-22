@@ -13,7 +13,7 @@ public class Main {
         // TESTANDO LEITURA DE ARQUIVOS (apagar depois)
         Jogo jogo = new Jogo();
         LerPokemons leitorPokemons = new LerPokemons();
-        leitorPokemons.lerArquivo(jogo, jogo.getPokedexPath());
+        leitorPokemons.lerArquivo(jogo);
         for(Pokemon pokemon : jogo.getPokedex())
             System.out.println(pokemon);
 
