@@ -1,18 +1,18 @@
 <Pokebolas>
 	<Pokebola>
 		<nome>Master ball</nome>
-		<chanceCaptura>1.0</chanceCaptura>
+		<chanceCaptura>100</chanceCaptura>
 	</Pokebola>
 	<Pokebola>
 		<nome>Ultra ball</nome>
-		<chanceCaptura>0.6</chanceCaptura>
+		<chanceCaptura>60</chanceCaptura>
 	</Pokebola>
 	<Pokebola>
 		<nome>Great ball</nome>
-		<chanceCaptura>0.4</chanceCaptura>
+		<chanceCaptura>40</chanceCaptura>
 	</Pokebola>
 	<Pokebola>
 		<nome>Pokeball</nome>
-		<chanceCaptura>0.2</chanceCaptura>
+		<chanceCaptura>20</chanceCaptura>
 	</Pokebola>
 </Pokebolas>
