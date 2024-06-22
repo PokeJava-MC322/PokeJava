@@ -53,5 +53,8 @@ public class LerItens implements I_Arquivo {
             System.err.println("Erro ao ler arquivo: " + e.getMessage());
             e.printStackTrace();
         }
+
+        jogo.setPokebolas(pokebolas);
+        jogo.setPocoes(pocoes);
     }
 }
