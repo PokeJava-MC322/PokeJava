@@ -5,9 +5,18 @@ import application.pokemon.EquipePokemon;
 import application.pokemon.Pokemon;
 import application.pokemon.PokemonFactory;
 import application.pokemon.TipoPokemon;
+import application.Jogo;
+import application.leituraArquivos.*;
 
 public class Main {
     public static void main(String[] args) {
+        // TESTANDO LEITURA DE ARQUIVOS (apagar depois)
+        Jogo jogo = new Jogo();
+        LerPokemons leitorPokemons = new LerPokemons();
+        leitorPokemons.lerArquivo(jogo, jogo.getPokedexPath());
+        for(Pokemon pokemon : jogo.getPokedex())
+            System.out.println(pokemon);
+
         // TESTANDO POKEMONS (apagar depois)
         PokemonFactory factory = new ConcretePokemonFactory();
 
