@@ -14,4 +14,9 @@ public class Pokebola extends Item {
         // Implementar
         return;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s: %d%% de chance de captura", this.nome, this.chanceCaptura);
+    }
 }
