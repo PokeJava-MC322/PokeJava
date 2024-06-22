@@ -42,14 +42,14 @@ public class LerPokemons implements I_Arquivo {
                 int baseHP = Integer.parseInt(pokemonElement.getElementsByTagName("baseHP").item(0).getTextContent());
                 int baseATK = Integer.parseInt(pokemonElement.getElementsByTagName("baseATK").item(0).getTextContent());
 
-                Pokemon pokemon = pokemonFactory.criarPokemon(ID, nome, tipo, nivelMin, nivelMax, preEvolucaoID, evolucaoID, baseHP, baseATK);
-                pokedex.add(pokemon);                
+                //Pokemon pokemon = pokemonFactory.criarPokemon(ID, nome, tipo, nivelMin, nivelMax, preEvolucaoID, evolucaoID, baseHP, baseATK);
+                //pokedex.add(pokemon);                
             }
         } catch(Exception e) {
             System.err.println("Erro ao ler arquivo: " + e.getMessage());
             e.printStackTrace();
         }
 
-        jogo.setPokedex(pokedex);
+        //jogo.setPokedex(pokedex);
     }
 }
