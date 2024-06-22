@@ -19,6 +19,13 @@ public class Pokebola extends Item {
 
     public int getChanceCaptura() { return this.chanceCaptura; }
 
+    /**
+     * <p>Tenta captura do pokémon inimigo e diminui em 1 a quantidade do item
+     * <p> <b>- Probabilidades:</b>
+     * <p>Quando %HP do pokémon inimigo tende a 0, a chance de captura é igual a 2x a chance de captura da pokebola
+     * <p>Quando %HP do pokémon inimigo tende a 1, a chance de captura é igual a chance de captura da pokebola
+     * @param alvo Pokemon inimigo alvo da captura
+     */
     public void usarItem(Pokemon alvo) {
         if(this.quantidade <= 0)
             return;
@@ -32,7 +39,7 @@ public class Pokebola extends Item {
         } else {
             // Não captura
         }
-        
+
         this.quantidade = this.quantidade - 1;
         return;
     }
