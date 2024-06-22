@@ -14,4 +14,9 @@ public class Pocao extends Item {
         // Implementar
         return;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s: +%d HP", this.nome, this.cura);
+    }
 }
