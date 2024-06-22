@@ -62,4 +62,18 @@ public class Inventario {
 
         return false; // Não é nem uma pokebola nem uma poção existente
     }
+
+    /**
+     * Remove item do inventário
+     * @param nome String com o nome do item a ser removido
+     * @return {@code true} Se o item foi encontrado e removido, {@code false} caso item não seja encontrado
+     */
+    public boolean removerItem(String nome) {
+        Item item = acessarItem(nome);
+        if(item == null)
+            return false;
+        int index = this.itens.indexOf(item);
+        this.itens.remove(index);
+        return true;
+    }
 }
