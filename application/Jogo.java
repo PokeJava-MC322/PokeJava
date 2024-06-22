@@ -10,7 +10,7 @@ public class Jogo {
     private List<Pokemon> pokedex;
     private List<Pokebola> pokebolas;
     private List<Pocao> pocoes;
-    private final String dataPath = "lerArquivos/../../../resource/data/";
+    private final String dataPath = "leituraArquivos/../../resource/data/";
 
     public void setPokedex(List<Pokemon> pokedex) { this.pokedex = pokedex; }
     public void setPokebolas(List<Pokebola> pokebolas) { this.pokebolas = pokebolas; }
