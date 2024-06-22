@@ -4,7 +4,7 @@ import application.pokemon.Pokemon;
 
 import java.util.Random;
 
-public class Pokebola extends Item {
+public class Pokebola extends Item implements Comparable<Pokebola> {
     private int chanceCaptura; // [%], 0 a 100 para pokemon com vida cheia
 
     public Pokebola(String nome, int chanceCaptura) {
@@ -47,5 +47,10 @@ public class Pokebola extends Item {
     @Override
     public String toString() {
         return String.format("%s: %d%% de chance de captura", this.nome, this.chanceCaptura);
+    }
+
+    @Override
+    public int compareTo(Pokebola pokebola) {
+        return this.chanceCaptura - pokebola.chanceCaptura;
     }
 }

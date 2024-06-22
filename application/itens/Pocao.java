@@ -2,7 +2,7 @@ package application.itens;
 
 import application.pokemon.Pokemon;
 
-public class Pocao extends Item {
+public class Pocao extends Item implements Comparable<Pocao> {
     private int cura;
 
     public Pocao(String nome, int cura) {
@@ -33,5 +33,10 @@ public class Pocao extends Item {
     @Override
     public String toString() {
         return String.format("%s: +%d HP", this.nome, this.cura);
+    }
+
+    @Override
+    public int compareTo(Pocao pocao) {
+        return this.cura - pocao.getCura();
     }
 }
