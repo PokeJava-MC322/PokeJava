@@ -13,7 +13,7 @@ import application.leituraArquivos.*;
 public class Main {
     public static void main(String[] args) {
         // TESTANDO LEITURA DE ARQUIVOS (apagar depois)
-        Jogo jogo = new Jogo();
+        Jogo jogo = Jogo.getInstancia();
         LerItens leitorItens = new LerItens();
         //LerPokemons leitorPokemons = new LerPokemons();
         leitorItens.lerArquivo(jogo);
