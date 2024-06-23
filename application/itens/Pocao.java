@@ -39,4 +39,7 @@ public class Pocao extends Item implements Comparable<Pocao> {
     public int compareTo(Pocao pocao) {
         return this.cura - pocao.getCura();
     }
+    public int compareTo(Pokebola pokebola) {
+        return 1;
+    }
 }

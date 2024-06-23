@@ -53,4 +53,7 @@ public class Pokebola extends Item implements Comparable<Pokebola> {
     public int compareTo(Pokebola pokebola) {
         return this.chanceCaptura - pokebola.chanceCaptura;
     }
+    public int compareTo(Pocao pocao) {
+        return -1;
+    }
 }
