@@ -36,4 +36,17 @@ public enum TipoPokemon {
         
         return matriz[this.ordinal()][tipoPokemon.ordinal()];
     }
+
+    public String stringEfetividade(TipoPokemon tipoPokemon) {
+        double efetividade = this.efetividade(tipoPokemon);
+        if(efetividade == 1)
+            return "";
+        if(efetividade == 0.5)
+            return "O ataque não foi muito efetivo...";
+        if(efetividade == 2)
+            return "O ataque foi super efetivo!";
+        if(efetividade == 0)
+            return "O ataque não surtiu efeito...";
+        return "";
+    }
 }
