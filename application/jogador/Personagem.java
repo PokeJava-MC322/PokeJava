@@ -39,8 +39,8 @@ public abstract class Personagem {
         if (experiencia >= 1000) {
             nivel += 1;
             System.out.println("O jogador subiu para o nível " + nivel + ".");
+            setExperiencia(0); // Reseta a experiência
         }
-        setExperiencia(0); // reseta a experiência, para que o personagem sempre suba de nível de 1000 em 1000
     }
 
     // IMPRESSÃO
