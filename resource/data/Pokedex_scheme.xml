@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Pokedex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Pokemon>
+		<ID>data</ID>
+		<nome>data</nome>
+		<tipo>data</tipo>
+		<nivelMin>data</nivelMin>
+		<nivelMax>data</nivelMax>
+		<preevolutionID>data</preevolutionID>
+		<evolutionID>data</evolutionID>
+		<baseHP>data</baseHP>
+		<baseATK>data</baseATK>
+	</Pokemon>
+	<Pokemon>
+		<ID>data</ID>
+		<nome>data</nome>
+		<tipo>data</tipo>
+		<nivelMin>data</nivelMin>
+		<nivelMax>data</nivelMax>
+		<preevolutionID>data</preevolutionID>
+		<evolutionID>data</evolutionID>
+		<baseHP>data</baseHP>
+		<baseATK>data</baseATK>
+	</Pokemon>
+</Pokedex>

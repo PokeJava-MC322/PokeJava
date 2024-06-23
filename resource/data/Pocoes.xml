@@ -1,0 +1,14 @@
+<Pocoes>
+	<Pocao>
+		<nome>Hyper Poção</nome>
+		<cura>120</cura>
+	</Pocao>
+	<Pocao>
+		<nome>Super Poção</nome>
+		<cura>60</cura>
+	</Pocao>
+	<Pocao>
+		<nome>Poção</nome>
+		<cura>20</cura>
+	</Pocao>
+</Pocoes>

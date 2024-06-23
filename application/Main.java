@@ -5,9 +5,26 @@ import application.pokemon.ConcretePokemonFactory;
 import application.pokemon.Pokemon;
 import application.pokemon.PokemonFactory;
 import application.pokemon.TipoPokemon;
+import application.itens.Pokebola;
+import application.itens.Pocao;
+import application.Jogo;
+import application.leituraArquivos.*;
 
 public class Main {
     public static void main(String[] args) {
+        // TESTANDO LEITURA DE ARQUIVOS (apagar depois)
+        Jogo jogo = Jogo.getInstancia();
+        LerItens leitorItens = new LerItens();
+        //LerPokemons leitorPokemons = new LerPokemons();
+        leitorItens.lerArquivo(jogo);
+        //leitorPokemons.lerArquivo(jogo);
+        for(Pokebola pokebola : jogo.getPokebolas())
+            System.out.println(pokebola);
+        for(Pocao pocao : jogo.getPocoes())
+            System.out.println(pocao);
+        // for(Pokemon pokemon : jogo.getPokedex())
+        //     System.out.println(pokemon);
+
         // TESTANDO POKEMONS (apagar depois)
         PokemonFactory factory = new ConcretePokemonFactory();
 
