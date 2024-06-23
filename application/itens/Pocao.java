@@ -32,7 +32,7 @@ public class Pocao extends Item implements Comparable<Pocao> {
 
     @Override
     public String toString() {
-        return String.format("%s: +%d HP", this.nome, this.cura);
+        return String.format("%s[%d] +%d HP", this.nome, this.quantidade, this.cura);
     }
 
     @Override

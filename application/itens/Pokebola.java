@@ -46,7 +46,7 @@ public class Pokebola extends Item implements Comparable<Pokebola> {
 
     @Override
     public String toString() {
-        return String.format("%s: %d%% de chance de captura", this.nome, this.chanceCaptura);
+        return String.format("%s[%d]", this.nome, this.quantidade);
     }
 
     @Override
