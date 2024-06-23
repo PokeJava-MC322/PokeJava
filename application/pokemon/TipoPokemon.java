@@ -17,6 +17,11 @@ public enum TipoPokemon {
     ROCK,
     WATER;
 
+    /**
+     * Através da matriz de efetividade, calcula qual o modificador de ataque (0x, 0.5x, 1x, 2x)
+     * @param tipoPokemon {@code TipoPokemon} do defensor (inimigo)
+     * @return {@code double} do multiplicador de efetividade
+     */
     public double efetividade(TipoPokemon tipoPokemon) {
         double[][] matriz = { {1  ,1  ,1  ,0.5,0.5,0.5,0.5,2  ,1  ,1  ,1  ,0.5,2  ,1  ,1  },
                               {1  ,2  ,1  ,0  ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,1  },
@@ -37,6 +42,11 @@ public enum TipoPokemon {
         return matriz[this.ordinal()][tipoPokemon.ordinal()];
     }
 
+    /**
+     * Retorna uma String com um texto sobre a efetividade do ataque
+     * @param tipoPokemon {@code TipoPokemon} do defensor (inimigo)
+     * @return {@code String} sobre a efetividade do ataque
+     */
     public String stringEfetividade(TipoPokemon tipoPokemon) {
         double efetividade = this.efetividade(tipoPokemon);
         if(efetividade == 1)
