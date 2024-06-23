@@ -4,16 +4,19 @@ import application.jogador.Jogador;
 import application.pokemon.Pokemon;
 import application.leituraArquivos.*;
 
-import java.util.Random;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class Main {
+
+public class Main extends Application {
     public static void main(String[] args) {
-        // TESTANDO LEITURA DE ARQUIVOS (apagar depois)
+        launch(args);
         Jogo jogo = Jogo.getInstancia();
         LerItens leitorItens = new LerItens();
         LerPokemons leitorPokemons = new LerPokemons();
         leitorItens.lerArquivo(jogo);
         leitorPokemons.lerArquivo(jogo);
+        // TESTANDO LEITURA DE ARQUIVOS (apagar depois)
         // for(Pokebola pokebola : jogo.getPokebolas())
         //     System.out.println(pokebola);
         // for(Pocao pocao : jogo.getPocoes())
@@ -45,5 +48,12 @@ public class Main {
         System.out.printf("%s atacou %s e causou %d de dano! ", poke1.getNome(), inimigo.getNome(), poke1.atacar(inimigo));
         System.out.println(poke1.getTipoPokemon().stringEfetividade(inimigo.getTipoPokemon()));
         System.out.println("Inimigo: " + inimigo);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        // TODO Auto-generated method stub
+        stage.show();
+        throw new UnsupportedOperationException("Unimplemented method 'start'");
     }
 }

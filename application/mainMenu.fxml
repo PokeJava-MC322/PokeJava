@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="mainMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true">
+         <image>
+            <Image url="@../resource/images/assets/menu_background.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="playButton" alignment="CENTER" layoutX="455.0" layoutY="360.0" mnemonicParsing="false" onAction="#playButtonClicked" prefHeight="75.0" prefWidth="370.0" text="JOGAR" textAlignment="CENTER">
+         <font>
+            <Font name="Pixelify Sans Regular" size="40.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
