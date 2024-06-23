@@ -15,7 +15,7 @@ public final class Jogo {
     private List<Pokemon> pokedex;
     private List<Pokebola> pokebolas;
     private List<Pocao> pocoes;
-    private final String dataPath = "leituraArquivos/../../resource/data/";
+    private final String dataPath = "resource/data/";
 
     // GETTERS
     public List<Pokemon> getPokedex() { return this.pokedex; }
