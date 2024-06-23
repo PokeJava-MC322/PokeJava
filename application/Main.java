@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
-    private static final String imagePath = "application/../resource/images/";
+    private static final String imagePath = "resource/images/";
     public static void main(String[] args) {
         launch(args);
         Jogo jogo = Jogo.getInstancia();
