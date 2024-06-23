@@ -2,7 +2,7 @@ package application.itens;
 
 import application.pokemon.Pokemon;
 
-public abstract class Item implements Comparable<Item>{
+public abstract class Item {
     protected String nome;
     protected int quantidade;
 
@@ -12,9 +12,4 @@ public abstract class Item implements Comparable<Item>{
     public void setQuantidade(int quantidade) { this.quantidade = quantidade; }
     
     public abstract void usarItem(Pokemon alvo);
-
-    @Override
-    public int compareTo(Item item) {
-        return this.nome.compareTo(item.getNome());
-    }
 }
