@@ -28,23 +28,19 @@ public class Main {
         Jogador jogador = new Jogador("Lari", 1, 0);
         System.out.println(jogador);
         Pokemon starter = jogo.getPokedex().get(1);
-        jogador.escolherPokemonInicial(starter.clone(5));
+        jogador.escolherPokemonInicial(starter.clone(50));
         jogador.aumentarExperiencia(500);
         System.out.println(jogador);
 
-        Random rand = new Random();
-        int rng = rand.nextInt(150) + 1;
-        Pokemon poke1 = jogo.getPokedex().get(rng).clone(10);
-        rng = rand.nextInt(150) + 1;
-        Pokemon poke2 = jogo.getPokedex().get(rng).clone(21);
+        Pokemon poke1 = jogo.gerarPokemonVerificado(jogador, 50);
+        Pokemon poke2 = jogo.gerarPokemonVerificado(jogador, 20);
         jogador.capturarPokemon(poke1);
         jogador.capturarPokemon(poke2);
         jogador.getEquipePokemon().adicionarPokemon(poke1);
 
         System.out.println(jogador);
 
-        rng = rand.nextInt(150) + 1;
-        Pokemon inimigo = jogo.getPokedex().get(rng).clone(10);
+        Pokemon inimigo = jogo.gerarPokemonVerificado(jogador, 5);
         System.out.printf("%s VS %s!\n", poke1, inimigo);
         System.out.printf("%s atacou %s e causou %d de dano! ", poke1.getNome(), inimigo.getNome(), poke1.atacar(inimigo));
         System.out.println(poke1.getTipoPokemon().stringEfetividade(inimigo.getTipoPokemon()));

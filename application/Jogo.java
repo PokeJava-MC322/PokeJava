@@ -2,9 +2,11 @@ package application;
 
 import application.pokemon.Pokemon;
 import application.itens.Pokebola;
+import application.jogador.Jogador;
 import application.itens.Pocao;
 
 import java.util.List;
+import java.util.Random;
 
 public final class Jogo {
     // ATRIBUTOS
@@ -32,5 +34,109 @@ public final class Jogo {
         if(instancia == null)
             instancia = new Jogo();
         return instancia;
+    }
+
+    /**
+     * <p>Gera um número aleatório entre Média-Delta e Média+Delta, mínimo 1 e máximo 99
+     * <p>Média = média do nível dos pokémons da equipe
+     * 
+     * @param jogador {@code Jogador} jogador que os pokémons serão usados como base
+     * @param delta {@code int} variação do nível em relação ao nível médio dos pokémons do jogador
+     * @return {@code int} nível aleatório gerado
+     */
+    private int gerarNivel(Jogador jogador, int delta) {
+        int nivelSoma = 0;
+        int n = 0;
+        
+        // Calcula a média do nível dos pokémons da sua equipe
+        for(Pokemon pokemon : jogador.getEquipePokemon().getEquipe()) {
+            nivelSoma += pokemon.getNivel();
+            n++;
+        }
+        int media = (int)Math.floor((double)nivelSoma / (double)n);
+
+        // Gera pokémon aleatório
+        Random rand = new Random();
+        int nivel = (media-delta) + rand.nextInt(2*delta);
+        nivel = Math.max(1, nivel);
+        nivel = Math.min(99, nivel);
+        return nivel;
+    }
+
+    /**
+     * Gera um inteiro entre 1 e 151
+     * @return {@code int} 
+     */
+    private int gerarID() {
+        Random rand = new Random();
+        int ID = rand.nextInt(150) + 1;
+        return ID;
+    }
+
+    /**
+     * Gera um pokémon com base em ID e nível
+     * 
+     * @param ID
+     * @param nivel
+     * @return {@code Pokemon} pokémon gerado
+     */
+    private Pokemon gerarPokemon(int ID, int nivel) {
+        if(ID >= 133 && ID <= 136) { // Eevolutions
+            Random rand = new Random();
+            return this.pokedex.get(134 + rand.nextInt(3)).clone(nivel); // 133, 134, 135 ou 136
+        }
+        return this.pokedex.get(ID).clone(nivel);
+    }
+
+    /**
+     * Verifica se o pokémon está dentro dos limites de nível
+     * @param pokemon {@code Pokemon} pokémon a ser verificado
+     * @return {@code Pokemon} pokémon verificado ou {@code null} caso um novo ID precise ser gerado
+     */
+    private Pokemon verificaPokemon(Pokemon pokemon) {
+        if(pokemon.getNivel() < pokemon.getNivelMin()) {
+            if(pokemon.getPreEvolucaoID() == null)
+                return null; // Pokemon com nível abaixo do mínimo e sem pré-evolução
+            System.out.println(pokemon.getID() + " Pré-evolucaoID: " + pokemon.getPreEvolucaoID());
+            if(pokemon.getPreEvolucaoID() != null)
+                System.out.println("nao é null???");
+            System.out.println(pokemon.getNivel());
+            pokemon = gerarPokemon(Integer.valueOf(pokemon.getPreEvolucaoID()), pokemon.getNivel());
+            return verificaPokemon(pokemon);
+        }
+
+        if(pokemon.getNivel() > pokemon.getNivelMax()) {
+            if(pokemon.getEvolucaoID() == null)
+                return null; // Pokemon com nível acima do máximo e sem evolução
+            System.out.println("evolucaoID: " + pokemon.getEvolucaoID());
+            System.out.println(pokemon.getNivel());
+            pokemon = gerarPokemon(Integer.valueOf(pokemon.getEvolucaoID()), pokemon.getNivel());
+            return verificaPokemon(pokemon);
+        }
+
+        return pokemon;
+    }
+
+    /**
+     * Gera um pokémon dentro do range de nível valido [Média-Delta, Média+Delta]
+     * @param jogador {@code Jogador}
+     * @param delta {@code int} variação máxima do nível do pokémon gerado em comparação ao nível médio da equipe do jogador
+     * @return {@code Pokemon} pokémon gerado e verificado
+     */
+    public Pokemon gerarPokemonVerificado(Jogador jogador, int delta) {
+        int nivel = gerarNivel(jogador, delta);
+
+        int ID;
+        Pokemon pokemon = new Pokemon();
+        boolean flag = false;
+        while(!flag) { // Enquanto nenhum pokemon válido for gerado
+            ID = gerarID();
+            pokemon = gerarPokemon(ID, nivel); // Gera um novo pokemon
+            pokemon = verificaPokemon(pokemon);
+            flag = true;
+            if(pokemon == null) // Não foi possível gerar pokémon com este ID
+                flag = false;
+        }
+        return pokemon;
     }
 }

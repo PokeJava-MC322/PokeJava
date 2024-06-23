@@ -21,6 +21,17 @@ public class Pokemon implements Cloneable {
         this.hpBase = hpBase;
         this.atkBase = atkBase;
     }
+    public Pokemon() {
+        this.ID = "0000";
+        this.nome = "NULL";
+        this.tipoPokemon = TipoPokemon.NORMAL;
+        this.preEvolucaoID = "0000";
+        this.evolucaoID = "0000";
+        this.nivelMin = 1;
+        this.nivelMax = 99;
+        this.hpBase = 1;
+        this.atkBase = 1;
+    }
     public Pokemon(Pokemon pokemon) {
         this.ID = pokemon.getID();
         this.nome = pokemon.getNome();
