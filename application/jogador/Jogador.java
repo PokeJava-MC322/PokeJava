@@ -43,9 +43,7 @@ public class Jogador extends Personagem {
     }
 
     public void curarPokemons() {
-        for (Pokemon pokemon : pokemonsCapturados) {
-            pokemon.curar();
-        }
+        // Implementar
     }
 
     // IMPRESSÃO

@@ -1,8 +1,6 @@
 package application.leituraArquivos;
 
 import application.Jogo;
-import application.pokemon.ConcretePokemonFactory;
-import application.pokemon.PokemonFactory;
 import application.pokemon.Pokemon;
 import application.pokemon.TipoPokemon;
 
@@ -19,7 +17,6 @@ public class LerPokemons implements I_Arquivo {
     @Override
     public void lerArquivo(Jogo jogo) {
         List<Pokemon> pokedex = new ArrayList<>();
-        PokemonFactory pokemonFactory = new ConcretePokemonFactory();
 
         try {
             File file = new File(jogo.getDataPath() + "Pokedex.xml");
@@ -34,7 +31,7 @@ public class LerPokemons implements I_Arquivo {
 
                 String ID = pokemonElement.getElementsByTagName("ID").item(0).getTextContent();
                 String nome = pokemonElement.getElementsByTagName("nome").item(0).getTextContent();
-                TipoPokemon tipo = TipoPokemon.valueOf(pokemonElement.getElementsByTagName("tipo").item(0).getTextContent());
+                TipoPokemon tipo = TipoPokemon.valueOf(pokemonElement.getElementsByTagName("tipo").item(0).getTextContent().toUpperCase());
                 int nivelMin = Integer.parseInt(pokemonElement.getElementsByTagName("nivelMin").item(0).getTextContent());
                 int nivelMax = Integer.parseInt(pokemonElement.getElementsByTagName("nivelMax").item(0).getTextContent());
                 String preEvolucaoID = pokemonElement.getElementsByTagName("preevolutionID").item(0).getTextContent();
@@ -42,14 +39,14 @@ public class LerPokemons implements I_Arquivo {
                 int baseHP = Integer.parseInt(pokemonElement.getElementsByTagName("baseHP").item(0).getTextContent());
                 int baseATK = Integer.parseInt(pokemonElement.getElementsByTagName("baseATK").item(0).getTextContent());
 
-                //Pokemon pokemon = pokemonFactory.criarPokemon(ID, nome, tipo, nivelMin, nivelMax, preEvolucaoID, evolucaoID, baseHP, baseATK);
-                //pokedex.add(pokemon);                
+                Pokemon pokemon = new Pokemon(ID, nome, tipo, preEvolucaoID, evolucaoID, nivelMin, nivelMax, baseHP, baseATK);
+                pokedex.add(pokemon);                
             }
         } catch(Exception e) {
             System.err.println("Erro ao ler arquivo: " + e.getMessage());
             e.printStackTrace();
         }
 
-        //jogo.setPokedex(pokedex);
+        jogo.setPokedex(pokedex);
     }
 }

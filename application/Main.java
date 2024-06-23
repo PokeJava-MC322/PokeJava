@@ -1,50 +1,47 @@
 package application;
 
 import application.jogador.Jogador;
-import application.pokemon.ConcretePokemonFactory;
 import application.pokemon.Pokemon;
-import application.pokemon.PokemonFactory;
-import application.pokemon.TipoPokemon;
 import application.itens.Pokebola;
 import application.itens.Pocao;
 import application.Jogo;
 import application.leituraArquivos.*;
+
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         // TESTANDO LEITURA DE ARQUIVOS (apagar depois)
         Jogo jogo = Jogo.getInstancia();
         LerItens leitorItens = new LerItens();
-        //LerPokemons leitorPokemons = new LerPokemons();
+        LerPokemons leitorPokemons = new LerPokemons();
         leitorItens.lerArquivo(jogo);
-        //leitorPokemons.lerArquivo(jogo);
+        leitorPokemons.lerArquivo(jogo);
         for(Pokebola pokebola : jogo.getPokebolas())
             System.out.println(pokebola);
         for(Pocao pocao : jogo.getPocoes())
             System.out.println(pocao);
-        // for(Pokemon pokemon : jogo.getPokedex())
-        //     System.out.println(pokemon);
+        for(Pokemon pokemon : jogo.getPokedex())
+            System.out.println(pokemon);
 
-        // TESTANDO POKEMONS (apagar depois)
-        PokemonFactory factory = new ConcretePokemonFactory();
+        // // TESTANDO JOGADOR (apagar depois)
+        // Jogador lari = new Jogador("Lari", 1, 0);
+        // lari.escolherPokemonInicial(jogo.getPokedex().get(1));
+        // lari.aumentarExperiencia(500);
 
-        Pokemon squirtle = factory.criarPokemon("Squirtle", TipoPokemon.AGUA, 0, 40, 10);
-        Pokemon chimchar = factory.criarPokemon("Chimchar", TipoPokemon.FOGO, 0, 35, 10);
-        Pokemon turtwig = factory.criarPokemon("Turtwig", TipoPokemon.PLANTA, 0, 30, 10);
+        // Random rand = new Random();
+        // int rng = rand.nextInt(150) + 1;
+        // Pokemon poke1 = jogo.getPokedex().get(rng).clone(10);
+        // rng = rand.nextInt(150) + 1;
+        // Pokemon poke2 = jogo.getPokedex().get(rng).clone(5);
+        // lari.capturarPokemon(poke1);
+        // lari.capturarPokemon(poke2);
+        // lari.getEquipePokemon().adicionarPokemon(poke1);
+        // lari.getEquipePokemon().adicionarPokemon(poke2);
+        // System.out.println("\n");
 
-        // TESTANDO JOGADOR (apagar depois)
-        Jogador lari = new Jogador("Lari", 1, 0);
-        lari.escolherPokemonInicial(squirtle);
-        lari.aumentarExperiencia(500);
-        lari.capturarPokemon(turtwig);
-        lari.capturarPokemon(chimchar);
+        // System.out.println(lari);
 
-        lari.getEquipePokemon().adicionarPokemon(turtwig);
-        lari.getEquipePokemon().adicionarPokemon(chimchar);
-        System.out.println("\n");
-
-        System.out.println(lari);
-
-        turtwig.atacar(chimchar);
+        // poke1.atacar(poke2);
     }
 }
