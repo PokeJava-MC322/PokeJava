@@ -2,14 +2,15 @@ package application.itens;
 
 import application.Jogo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Inventario {
     // ATRIBUTOS
     private List<Item> itens;
 
-    public Inventario(List<Item> itens) {
-        this.itens = itens;
+    public Inventario() {
+        this.itens = new ArrayList<Item>();
     }
 
     public List<Item> getItens() { return this.itens; }
@@ -75,5 +76,13 @@ public class Inventario {
         int index = this.itens.indexOf(item);
         this.itens.remove(index);
         return true;
+    }
+
+    public void listarItens() {
+        this.itens.sort(null);
+        System.out.println("Itens no inventário:");
+        for(Item item : this.itens) {
+            System.out.println("- " + item);
+        }
     }
 }
