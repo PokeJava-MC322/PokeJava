@@ -9,12 +9,9 @@ public class EquipePokemon {
     private Pokemon pokemonAtivo;
 
     // CONSTRUTOR
-    public EquipePokemon(int tamanhoDaEquipe, Pokemon pokemonAtivo) {
+    public EquipePokemon(int tamanhoDaEquipe) {
         this.tamanhoDaEquipe = tamanhoDaEquipe;
         this.equipe = new ArrayList<>();
-        this.equipe.add(pokemonAtivo);
-        this.pokemonAtivo = pokemonAtivo;
-        System.out.println(pokemonAtivo.getNome() + " foi adicionado à equipe.");
     }
 
     // GETTERS
@@ -32,10 +29,17 @@ public class EquipePokemon {
 
     // SETTERS
     public void setPokemonAtivo(Pokemon novoPokemonAtivo) {
-        if (equipe.contains(novoPokemonAtivo)) {
+        if (equipe.isEmpty()) {
+            equipe.add(novoPokemonAtivo);
             this.pokemonAtivo = novoPokemonAtivo;
+            System.out.println(novoPokemonAtivo.getNome() + " foi adicionado à equipe");
         } else {
-            System.out.println("O Pokémon não está na equipe.");
+            if (equipe.contains(novoPokemonAtivo)) {
+                this.pokemonAtivo = novoPokemonAtivo;
+                System.out.println(novoPokemonAtivo.getNome() + " é agora o Pokémon ativo.");
+            } else {
+                System.out.println("O Pokémon não está na equipe.");
+            }
         }
     }
 
@@ -68,18 +72,11 @@ public class EquipePokemon {
     // IMPRESSÃO
     @Override
     public String toString() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
+        result.append("EQUIPE POKÉMON\n");
         for (Pokemon pokemon : equipe) {
-            result += "Nome: " + pokemon.getNome() +
-                    ", Tipo: " + pokemon.getTipoPokemon() +
-                    ", Nível: " + pokemon.getNivel() +
-                    ", HP: " + pokemon.getHp() +
-                    ", Poder de Ataque: " + pokemon.getPoderAtaque();
-            if (pokemon.equals(pokemonAtivo)) {
-                result += " (Ativo)";
-            }
-            result += "\n";
+            result.append(pokemon.toString()).append("\n");
         }
-        return result;
+        return result.toString();
     }
 }

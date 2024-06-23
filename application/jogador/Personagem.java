@@ -31,6 +31,10 @@ public abstract class Personagem {
     }
 
     // OUTROS MÉTODOS
+    public void aumentarExperiencia(int aumento) {
+        experiencia += aumento;
+    }
+
     public void subirDeNivel() {
         if (experiencia >= 1000) {
             nivel += 1;
