@@ -161,7 +161,7 @@
 		<nivelMin>7</nivelMin>
 		<nivelMax>10</nivelMax>
 		<preevolutionID>0013</preevolutionID>
-		<evolutionID>0010</evolutionID>
+		<evolutionID>0015</evolutionID>
 		<baseHP>45</baseHP>
 		<baseATK>25</baseATK>
 	</Pokemon>
@@ -799,7 +799,7 @@
 		<nivelMin>1</nivelMin>
 		<nivelMax>30</nivelMax>
 		<preevolutionID>NULL</preevolutionID>
-		<evolutionID>0072</evolutionID>
+		<evolutionID>0073</evolutionID>
 		<baseHP>40</baseHP>
 		<baseATK>40</baseATK>
 	</Pokemon>
