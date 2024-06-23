@@ -24,7 +24,7 @@ public class Pocao extends Item implements Comparable<Pocao> {
     public void usarItem(Pokemon alvo) {
         if(this.quantidade <= 0)
             return;
-        alvo.setHP(Math.min(alvo.getMaxHP(), alvo.getHP() + this.cura));
+        alvo.setHp(Math.min(alvo.getMaxHp(), alvo.getHp() + this.cura));
 
         this.quantidade = this.quantidade - 1;
         return;

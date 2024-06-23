@@ -32,7 +32,7 @@ public class Pokebola extends Item implements Comparable<Pokebola> {
         Random rand = new Random();
         int chancePokebola = rand.nextInt(100);
 
-        double hpRatio = (double) alvo.getHP() / (double) alvo.getMaxHP();
+        double hpRatio = (double) alvo.getHp() / (double) alvo.getMaxHp();
         double chance = (1 - hpRatio)*this.chanceCaptura + this.chanceCaptura; // chanceCaptura se %HP -> 100%, 2*chanceCaptura se %HP -> 0%
         if(chance >= chancePokebola) {
             // Captura

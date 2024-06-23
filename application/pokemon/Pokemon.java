@@ -43,6 +43,11 @@ public abstract class Pokemon {
         return poderAtaque;
     }
 
+    // SETTERS
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
     // MÉTODOS ABSTRATOS
     public void atacar(Pokemon alvo){}
 
