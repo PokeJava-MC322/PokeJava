@@ -59,4 +59,42 @@ public enum TipoPokemon {
             return "O ataque não surtiu efeito...";
         return "";
     }
+
+    @Override
+    public String toString() {
+        switch(this) {
+            case BUG:
+                return "Inseto";
+            case DRAGON:
+                return "Dragão";
+            case ELECTRIC:
+                return "Elétrico";
+            case FAIRY:
+                return "Fada";
+            case FIGHTING:
+                return "Lutador";
+            case FIRE:
+                return "Fogo";
+            case GHOST:
+                return "Fantasma";
+            case GRASS:
+                return "Planta";
+            case GROUND:
+                return "Terra";
+            case ICE:
+                return "Gelo";
+            case NORMAL:
+                return "Normal";
+            case POISON:
+                return "Venenoso";
+            case PSYCHIC:
+                return "Psíquico";
+            case ROCK:
+                return "Pedra";
+            case WATER:
+                return "Água";
+            default:
+                return "NULL";
+        }
+    }
 }

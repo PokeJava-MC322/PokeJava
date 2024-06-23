@@ -66,7 +66,7 @@ public class Pokemon implements Cloneable {
 
     @Override
     public String toString() {
-        return String.format("%s lvl %d (Tipo %s) [%d/%d]", this.nome, this.nivel, this.tipoPokemon.name(), this.hpAtual, this.hpMax);
+        return String.format("%s lvl %d (Tipo %s) [%d/%d]", this.nome, this.nivel, this.tipoPokemon, this.hpAtual, this.hpMax);
     }
 
     @Override
