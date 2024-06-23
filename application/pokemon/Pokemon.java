@@ -57,7 +57,7 @@ public class Pokemon implements Cloneable {
 
     @Override
     public String toString() {
-        return String.format("%s (Tipo %s) [%d/%d]", this.nome, this.tipoPokemon.name(), this.hpAtual, this.hpMax);
+        return String.format("%s lvl %d (Tipo %s) [%d/%d]", this.nome, this.nivel, this.tipoPokemon.name(), this.hpAtual, this.hpMax);
     }
 
     @Override
@@ -67,6 +67,8 @@ public class Pokemon implements Cloneable {
     public Pokemon clone(int nivel) {
         Pokemon pokemonNovo = this.clone();
         pokemonNovo.setNivel(nivel);
+        pokemonNovo.setHPMax(pokemonNovo.getHPBase() + pokemonNovo.getNivel());
+        pokemonNovo.setHP(pokemonNovo.getHPMax());
         return pokemonNovo;
     }
 }

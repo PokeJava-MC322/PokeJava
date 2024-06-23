@@ -5,33 +5,27 @@ import java.util.List;
 
 import application.pokemon.EquipePokemon;
 import application.pokemon.Pokemon;
+import application.itens.Inventario;
 
 public class Jogador extends Personagem {
     private List<Pokemon> pokemonsCapturados;
     private EquipePokemon equipePokemon;
-    // private Inventario inventario;
+    private Inventario inventario;
 
     // CONSTRUTOR
     public Jogador(String nome, int nivel, int experiencia) {
         super(nome, nivel, experiencia);
-        this.pokemonsCapturados = new ArrayList<>();
+        this.pokemonsCapturados = new ArrayList<Pokemon>();
         this.equipePokemon = new EquipePokemon(3);
+        this.inventario = new Inventario();
     }
 
     // GETTERS
-    public List<Pokemon> getPokemonsCapturados() {
-        return pokemonsCapturados;
-    }
+    public List<Pokemon> getPokemonsCapturados() { return pokemonsCapturados; }
+    public EquipePokemon getEquipePokemon() { return equipePokemon; }
+    public Inventario getInventario() { return inventario; }
 
-    public EquipePokemon getEquipePokemon() {
-        return equipePokemon;
-    }
-
-    // public Inventario getInventario() {
-    //     return inventario;
-    // }
-
-    // OUTROS MÉTODOS
+    // MÉTODOS
     public void capturarPokemon(Pokemon pokemon) {
         pokemonsCapturados.add(pokemon);
         System.out.println(pokemon.getNome() + " foi capturado.");
