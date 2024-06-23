@@ -40,10 +40,14 @@ public class Main {
         jogador.capturarPokemon(poke1);
         jogador.capturarPokemon(poke2);
         jogador.getEquipePokemon().adicionarPokemon(poke1);
-        jogador.getEquipePokemon().adicionarPokemon(poke2);
 
         System.out.println(jogador);
 
-        poke1.atacar(poke2);
+        rng = rand.nextInt(150) + 1;
+        Pokemon inimigo = jogo.getPokedex().get(rng).clone(10);
+        System.out.printf("%s VS %s!\n", poke1, inimigo);
+        System.out.printf("%s atacou %s e causou %d de dano! ", poke1.getNome(), inimigo.getNome(), poke1.atacar(inimigo));
+        System.out.println(poke1.getTipoPokemon().stringEfetividade(inimigo.getTipoPokemon()));
+        System.out.println("Inimigo: " + inimigo);
     }
 }

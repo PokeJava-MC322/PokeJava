@@ -53,7 +53,16 @@ public class Pokemon implements Cloneable {
     public void setHPMax(int hpMax) { this.hpMax = hpMax; }
 
     // MÉTODOS
-    public void atacar(Pokemon alvo){}
+    /**
+     * <p>Reduz a vida do pokemon alvo em
+     * <p>Floor[(AtaqueBase + NivelPokemon)xEfetividade)]
+     * @param alvo Pokemon que receberá o ataque
+     */
+    public int atacar(Pokemon alvo) {
+        int dano = (int) Math.floor((0.25*this.atkBase + this.nivel) * this.tipoPokemon.efetividade(alvo.getTipoPokemon()));
+        alvo.setHP(Math.max(0, (alvo.getHP() - dano)));
+        return dano;
+    }
 
     @Override
     public String toString() {
