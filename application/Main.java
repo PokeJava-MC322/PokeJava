@@ -2,9 +2,6 @@ package application;
 
 import application.jogador.Jogador;
 import application.pokemon.Pokemon;
-import application.itens.Pokebola;
-import application.itens.Pocao;
-import application.Jogo;
 import application.leituraArquivos.*;
 
 import java.util.Random;
