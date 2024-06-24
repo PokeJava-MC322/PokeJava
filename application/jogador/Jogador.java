@@ -35,9 +35,11 @@ public class Jogador extends Personagem {
 
     public void escolherPokemonInicial(Jogo jogo, Scanner scanner) {
         System.out.println("\n" + "Escolha seu Pokémon inicial!");
-        for (int i = 0; i < 3; i++) {
-            Pokemon pokemon = jogo.getPokedex().get(new int[]{1, 4, 7}[i]); // Acesso direto aos índices 1, 4 e 7
-            System.out.println((i + 1) + ". " + pokemon.getNome());
+
+        int[] ids = {1, 4, 7};
+        for (int i = 0; i < ids.length; i++) {
+            Pokemon pokemon = jogo.gerarPokemon(ids[i], 1);
+            System.out.println((i + 1) + ". " + pokemon);
         }
     
         int escolha;

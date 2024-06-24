@@ -3,6 +3,9 @@ package application;
 import application.pokemon.Pokemon;
 import application.itens.Pokebola;
 import application.jogador.Jogador;
+import application.batalha.Batalha;
+import application.batalha.Resultado;
+import application.itens.InvalidItemException;
 import application.itens.Pocao;
 
 import java.util.List;
@@ -81,7 +84,7 @@ public final class Jogo {
      * @param nivel
      * @return {@code Pokemon} pokémon gerado
      */
-    private Pokemon gerarPokemon(int ID, int nivel) {
+    public Pokemon gerarPokemon(int ID, int nivel) {
         if(ID >= 133 && ID <= 136) { // Eevolutions
             Random rand = new Random();
             return this.pokedex.get(134 + rand.nextInt(3)).clone(nivel); // 133, 134, 135 ou 136
@@ -141,7 +144,7 @@ public final class Jogo {
         return pokemon;
     }
 
-    public void loopDeJogo() {
+    public void loopDeJogo() throws InvalidItemException {
         Scanner scanner = new Scanner(System.in);
     
         System.out.print("\n" + "Digite o nome do Jogador: ");
@@ -155,8 +158,8 @@ public final class Jogo {
             System.out.println("\n" + "***********************");
             System.out.println("     Menu Inicial");
             System.out.println("***********************");
-            System.out.println("1. Editar Equipe Pokémon");
-            System.out.println("2. Batalhar");
+            System.out.println("1. Batalhar");
+            System.out.println("2. Editar Equipe Pokémon");
             System.out.println("3. Sair do Jogo");
     
             System.out.print("\n" + "Digite o número correspondente à ação desejada: ");
@@ -165,10 +168,18 @@ public final class Jogo {
     
                 switch (escolha) {
                     case 1:
-                        System.out.println("Editando Equipe Pokémon");
+                        Resultado resultado = Batalha.batalharContraPokemonSelvagem(gerarPokemonVerificado(jogador, 5), jogador, scanner);
+                        if (resultado == Resultado.DERROTA) {
+                            System.out.println("Você foi derrotado.");
+                            jogoEmAndamento = false;
+                        } else if (resultado == Resultado.VITORIA) {
+                            System.out.println("Você derrotou o pokémon selvagem.");
+                        } else if (resultado == Resultado.CAPTURA) {
+                            System.out.println("Você capturou o pokémon selvagem.");
+                        }
                         break;
                     case 2:
-                        System.out.println("Batalhando");
+                        System.out.println(jogador);
                         break;
                     case 3:
                         System.out.println("Saindo do Jogo");

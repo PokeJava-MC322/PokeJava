@@ -9,24 +9,48 @@ import application.itens.Pocao;
 import java.util.Scanner;
 
 public class Batalha {
-    public static Resultado batalharContraPokemonSelvagem(Pokemon pokemonSelvagem, Jogador jogador) throws InvalidItemException {
+    public static Resultado batalharContraPokemonSelvagem(Pokemon pokemonSelvagem, Jogador jogador, Scanner scanner) throws InvalidItemException {
         int turno = 1;
+        
+        System.out.println("\n" + pokemonSelvagem.getNome() + " de nível " + pokemonSelvagem.getNivel() + " apareceu!");
+
         // loop de batalha 
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             // turno do jogador
             if (turno % 2 == 1) {
-                System.out.println("Escollha uma ação:");
-                System.out.println("1 - Atacar");
-                System.out.println("2 - Usar item");
-                System.out.println("3 - Trocar Pokémon");
-                // leitura da ação escolhida
-                int acao = scanner.nextInt();
-                switch(acao){
+                System.out.println("\n" + "******************");
+                System.out.println("     Batalha");
+                System.out.println("******************");
+                System.out.println("1. Atacar");
+                System.out.println("2. Usar Item");
+                System.out.println("3. Trocar Pokémon");
+
+                int escolha;
+                do {
+                    System.out.print("\n" + "Digite o número correspondente à ação desejada: ");
+                    if (scanner.hasNextInt()) {
+                        escolha = scanner.nextInt();
+                        if (escolha < 1 || escolha > 3) {
+                            System.out.println("Opção inválida. Tente novamente.");
+                        }
+                    } else {
+                        System.out.println("Entrada inválida. Por favor, digite um número.");
+                        scanner.next();
+                        escolha = 0;
+                    }
+                } while (escolha < 1 || escolha > 3);
+
+                switch(escolha){
                     case(1):
-                        jogador.getEquipePokemon().getPokemonAtivo().atacar(pokemonSelvagem);
+                        Pokemon pokemonJogador = jogador.getEquipePokemon().getPokemonAtivo();
+
+                        System.out.printf("\n" + pokemonJogador + " || VERSUS || " + pokemonSelvagem + "\n");
+                        System.out.println(pokemonJogador.getNome() + " atacou e causou " + pokemonJogador.atacar(pokemonSelvagem) + " de dano!");
+                        System.out.println(pokemonSelvagem.getNome() + " ficou com " + "[" + pokemonSelvagem.getHP() + "/" + pokemonSelvagem.getHPMax() + "]" + " de HP.");
+                        System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getTipoPokemon().stringEfetividade(pokemonSelvagem.getTipoPokemon()));
+
                         if (pokemonSelvagem.getHP() == 0) {
-                            System.out.println(pokemonSelvagem.getNome() + " foi derrotado.");
+                            System.out.println("\n" + pokemonSelvagem.getNome() + " foi derrotado.");
                             return Resultado.VITORIA;
                         }
                         break;
