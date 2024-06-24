@@ -61,7 +61,7 @@ public class EquipePokemon {
                 pokemonAtivo = equipe.get(0); // Define o primeiro Pokémon como ativo
                 System.out.println(pokemonAtivo.getNome() + " é agora o Pokémon ativo.");
             } else if (equipe.isEmpty()) {
-                pokemonAtivo = null; // Nenhum Pokémon na equipe
+                pokemonAtivo = new NullPokemon(); // Nenhum Pokémon na equipe
                 System.out.println("Não há Pokémon na equipe.");
             }
         } else {
