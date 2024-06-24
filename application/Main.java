@@ -3,6 +3,7 @@ package application;
 import application.jogador.Jogador;
 import application.pokemon.Pokemon;
 import application.leituraArquivos.*;
+import application.batalha.*;
 
 public class Main {
     public static void main(String[] args) {

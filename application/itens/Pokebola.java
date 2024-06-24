@@ -26,12 +26,7 @@ public class Pokebola extends Item implements Comparable<Pokebola>, ItemStrategy
      * <p>Quando %HP do pokémon inimigo tende a 1, a chance de captura é igual a chance de captura da pokebola
      * @param alvo Pokemon inimigo alvo da captura
      */
-<<<<<<< HEAD
     public boolean usarItem(Pokemon alvo) {
-=======
-    @Override
-    public void usarItem(Pokemon alvo) {
->>>>>>> origin/batalha-vitor
         if(this.quantidade <= 0)
             return false;
         Random rand = new Random();

@@ -1,4 +1,5 @@
 package application.itens;
+import application.pokemon.Pokemon;
 
 public abstract class Item {
     protected String nome;
@@ -8,9 +9,6 @@ public abstract class Item {
     public int getQuantidade() { return this.quantidade; };
 
     public void setQuantidade(int quantidade) { this.quantidade = quantidade; }
-<<<<<<< HEAD
     
     public abstract boolean usarItem(Pokemon alvo);
-=======
->>>>>>> origin/batalha-vitor
 }
