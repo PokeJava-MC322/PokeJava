@@ -59,9 +59,13 @@ public class Pokemon implements Cloneable {
     protected int getATKBase() { return this.atkBase; }
 
     // SETTERS
-    public void setNivel(int nivel) throws InvalidPokemonLevelException {
-        if (nivel < this.nivelMin || nivel > this.nivelMax) {
-            throw new InvalidPokemonLevelException("Nível " + nivel + " é inválido para o Pokémon " + this.nome);
+    public void setNivel(int nivel) {
+        try {
+            if (nivel < this.nivelMin || nivel > this.nivelMax) {
+                throw new InvalidPokemonLevelException("Nível " + nivel + " é inválido para o Pokémon " + this.nome);
+            }
+        } catch (InvalidPokemonLevelException e) {
+            nivel = nivel < this.nivelMin ? this.nivelMin : this.nivelMax;
         }
         this.nivel = nivel;
     }
@@ -92,11 +96,7 @@ public class Pokemon implements Cloneable {
     }
     public Pokemon clone(int nivel) {
         Pokemon pokemonNovo = this.clone();
-        try {
-            pokemonNovo.setNivel(nivel);
-        } catch (InvalidPokemonLevelException e) {
-            System.out.println("Erro ao definir o nível do novo Pokémon: " + e.getMessage());
-        }
+        pokemonNovo.setNivel(nivel);
         pokemonNovo.setHPMax(pokemonNovo.getHPBase() + pokemonNovo.getNivel());
         pokemonNovo.setHP(pokemonNovo.getHPMax());
         return pokemonNovo;
