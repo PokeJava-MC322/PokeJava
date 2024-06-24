@@ -121,6 +121,40 @@ public final class Jogo {
         return pokemon;
     }
 
+    // Gera um item aleatório e o adiciona ao inventário do jogador
+    private void gerarItemAleatorio(Jogador jogador) {
+        Random rand = new Random();
+        int item = rand.nextInt(100);
+        if (item == 0) {
+            jogador.getInventario().adicionarItem("Master ball", instancia, 1);
+            System.out.println("Master ball adicionada ao inventário.");
+        } 
+        else if (item <= 10){
+            jogador.getInventario().adicionarItem("Ultra ball", instancia, 1);
+            System.out.println("Ultra ball adicionada ao inventário.");
+        }
+        else if (item <= 30) {
+            jogador.getInventario().adicionarItem("Great ball", instancia, 1);
+            System.out.println("Great ball adicionada ao inventário.");
+        }
+        else if (item <= 55) {
+            jogador.getInventario().adicionarItem("Pokeball", instancia, 1);
+            System.out.println("Pokeball adicionada ao inventário.");
+        }
+        else if (item <= 65) {
+            jogador.getInventario().adicionarItem("Hyper Potion", instancia, 1);
+            System.out.println("Hyper Potion adicionada ao inventário.");
+        }
+        else if (item <= 80){
+            jogador.getInventario().adicionarItem("Super Potion", instancia, 1);
+            System.out.println("Super Potion adicionada ao inventário.");
+        }
+        else {
+            jogador.getInventario().adicionarItem("Potion", instancia, 1);
+            System.out.println("Potion adicionada ao inventário.");
+        }
+    }
+
     /**
      * Gera um pokémon dentro do range de nível valido [Média-Delta, Média+Delta]
      * @param jogador {@code Jogador}
@@ -180,6 +214,8 @@ public final class Jogo {
                             jogoEmAndamento = false;
                         } else if (resultado == Resultado.VITORIA) {
                             System.out.println("Você derrotou o pokémon selvagem.");
+                            // gera um item aleatório
+                            gerarItemAleatorio(jogador);
                         } else if (resultado == Resultado.CAPTURA) {
                             System.out.println("Você capturou o pokémon selvagem.");
                         }
