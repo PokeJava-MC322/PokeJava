@@ -43,5 +43,12 @@ public class Main {
         System.out.printf("%s atacou %s e causou %d de dano! ", poke1.getNome(), inimigo.getNome(), poke1.atacar(inimigo));
         System.out.println(poke1.getTipoPokemon().stringEfetividade(inimigo.getTipoPokemon()));
         System.out.println("Inimigo: " + inimigo);
+
+
+        Pokemon selvPokemon = jogo.gerarPokemonVerificado(jogador, 5);
+        Resultado resultado = Batalha.batalharContraPokemonSelvagem(selvPokemon, jogador);
+
+        System.out.println("Resultado: " + resultado);
+
     }
 }

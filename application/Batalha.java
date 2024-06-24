@@ -30,6 +30,10 @@ public class Batalha {
                         break;
                     case(2):
                         int itemInvalido = 1;
+                        if (jogador.getInventario().getItens().isEmpty()) {
+                            System.out.println("Inventário vazio.");
+                            break;
+                        }
                         do {
                             System.out.println("Escolha um item:");
                             jogador.getInventario().listarItens();
