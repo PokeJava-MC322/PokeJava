@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Batalha {
     public static Resultado batalharContraPokemonSelvagem(Pokemon pokemonSelvagem, Jogador jogador, Scanner scanner) {
-        System.out.println("Um pokémon selvagem apareceu!");
+        System.out.println("\n" + "Um pokémon selvagem apareceu!");
         System.out.println(pokemonSelvagem.toString());
         int turno = 1;
         // loop de batalha 
@@ -19,17 +19,17 @@ public class Batalha {
             // turno do jogador
             if (turno % 2 == 1) {
                 // Imprime as informações dos pokemons em batalha
-                System.out.println("Pokémon do jogador: " + jogador.getEquipePokemon().getPokemonAtivo().toString());
+                System.out.println("\n" + "Pokémon do jogador: " + jogador.getEquipePokemon().getPokemonAtivo().toString());
                 System.out.println("Pokémon selvagem: " + pokemonSelvagem.toString());
-                System.out.println("Escollha uma ação:");
-                System.out.println("1 - Atacar");
-                System.out.println("2 - Usar item");
-                System.out.println("3 - Trocar Pokémon");
+                System.out.println("1. Atacar");
+                System.out.println("2. Usar item");
+                System.out.println("3. Trocar Pokémon");
+                System.out.print("\n" + "Escolha uma ação: ");
                 // leitura da ação escolhida
                 int acao = scanner.nextInt();
                 switch(acao){
                     case(1):
-                        System.out.printf("%s atacou %s e causou %d de dano! ", jogador.getEquipePokemon().getPokemonAtivo().getNome(), pokemonSelvagem.getNome(), jogador.getEquipePokemon().getPokemonAtivo().atacar(pokemonSelvagem));
+                        System.out.printf("\n" + "%s atacou %s e causou %d de dano! ", jogador.getEquipePokemon().getPokemonAtivo().getNome(), pokemonSelvagem.getNome(), jogador.getEquipePokemon().getPokemonAtivo().atacar(pokemonSelvagem));
                         if (pokemonSelvagem.getHP() == 0) {
                             System.out.println(pokemonSelvagem.getNome() + " foi derrotado.");
                             return Resultado.VITORIA;
@@ -42,8 +42,8 @@ public class Batalha {
                             turno++;
                             break;
                         }
-                        System.out.println("Escolha um item:");
                         jogador.getInventario().listarItens();
+                        System.out.print("\n" + "Escolha um item: ");
                         String item = scanner.next();
                         try {
                             if (jogador.getInventario().acessarItem(item) != null) {
@@ -71,13 +71,14 @@ public class Batalha {
                         // Trocar pokémon
                         int pokemonInvalido = 1;
                         do {
-                            System.out.println("Escolha um pokémon:"); 
                             for (Pokemon pokemon : jogador.getEquipePokemon().getEquipe()) {
                                 // Imprime a lista de pokemons da equipe que possuem hp maior que zero
+                                System.out.println("\n" + "Equipe do jogador:");
                                 if (pokemon.getHP() > 0) {
-                                    System.out.println(pokemon.getNome());
+                                    System.out.println("- " + pokemon.getNome());
                                 }
                             }
+                            System.out.print("\n" + "Escolha um pokémon: "); 
                             String nomePokemon = scanner.next();
                             for (Pokemon pokemon : jogador.getEquipePokemon().getEquipe()) {
                                 if (pokemon.getNome().equals(nomePokemon)) {
@@ -93,12 +94,13 @@ public class Batalha {
             }
             // turno do pokemon selvagem
             else {
+                System.out.println("\n");
                 System.out.println("Turno de " + pokemonSelvagem.getNome() );
                 //System.out.println(pokemonSelvagem.getNome() + "causou" + pokemonSelvagem.atacar(jogador.getEquipePokemon().getPokemonAtivo()) + "de dano!");
                 System.out.println( pokemonSelvagem.getNome() + " atacou " + jogador.getEquipePokemon().getPokemonAtivo().getNome() + " e causou " + pokemonSelvagem.atacar(jogador.getEquipePokemon().getPokemonAtivo()) +" de dano!" );
                 // Caso o pokémon do jogador seja derrotado
                 if (jogador.getEquipePokemon().getPokemonAtivo().getHP() == 0) {
-                    System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getNome() + " foi derrotado.");
+                    System.out.println("\n" + jogador.getEquipePokemon().getPokemonAtivo().getNome() + " foi derrotado.");
                     // Percorre a lista de pokémons do jogador procurando algum que não esteja desmaiado
                     int pokemonsVivos = 0;
                     for (Pokemon pokemon : jogador.getEquipePokemon().getEquipe()) {

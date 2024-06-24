@@ -50,7 +50,7 @@ public class Pokebola extends Item implements Comparable<Pokebola>, ItemStrategy
 
     @Override
     public String toString() {
-        return String.format("%s[%d]", this.nome, this.quantidade);
+        return String.format("%s QTD[%d]", this.nome, this.quantidade);
     }
 
     @Override

@@ -44,7 +44,7 @@ public class Jogador extends Personagem {
     
         int escolha;
         do {
-            System.out.print("\n" + "Digite o número correspondente ao Pokémon que você deseja: ");
+            System.out.print("\n" + "Escolha um Pokémon: ");
             if (scanner.hasNextInt()) {
                 escolha = scanner.nextInt();
                 if (escolha < 1 || escolha > 3) {

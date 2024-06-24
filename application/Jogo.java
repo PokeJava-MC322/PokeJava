@@ -202,7 +202,7 @@ public final class Jogo {
             System.out.println("3. Centro Pokémon");
             System.out.println("4. Sair do Jogo");
     
-            System.out.print("\n" + "Digite o número correspondente à ação desejada: ");
+            System.out.print("\n" + "Escolha uma ação: ");
             if (scanner.hasNextInt()) {
                 int escolha = scanner.nextInt();
     

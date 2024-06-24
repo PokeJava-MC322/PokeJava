@@ -33,7 +33,7 @@ public class Pocao extends Item implements Comparable<Pocao>, ItemStrategy {
 
     @Override
     public String toString() {
-        return String.format("%s[%d] +%d HP", this.nome, this.quantidade, this.cura);
+        return String.format("%s QTD[%d] +%dHP", this.nome, this.quantidade, this.cura);
     }
 
     @Override
