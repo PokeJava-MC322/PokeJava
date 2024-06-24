@@ -38,8 +38,8 @@ public class Main {
         jogador.getEquipePokemon().adicionarPokemon(poke1);
         jogador.getEquipePokemon().setPokemonAtivo(poke1);
 
-        jogador.getInventario().adicionarItem("Poção", jogo, 5);
-        jogador.getInventario().adicionarItem("Ultra ball", jogo, 5);
+        //jogador.getInventario().adicionarItem("Poção", jogo, 5);
+        //jogador.getInventario().adicionarItem("Ultra ball", jogo, 5);
         jogador.getInventario().listarItens();
 
 
