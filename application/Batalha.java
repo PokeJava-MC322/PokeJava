@@ -61,7 +61,7 @@ public class Batalha {
                         // Trocar pokémon
                         int pokemonInvalido = 1;
                         do {
-                            System.out.println("Escolha um pokémon:");
+                            System.out.println("Escolha um pokémon:"); 
                             for (Pokemon pokemon : jogador.getEquipePokemon().getEquipe()) {
                                 // Imprime a lista de pokemons da equipe que possuem hp maior que zero
                                 if (pokemon.getHP() > 0) {
