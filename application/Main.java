@@ -4,8 +4,6 @@ import application.jogador.Jogador;
 import application.pokemon.Pokemon;
 import application.leituraArquivos.*;
 
-import java.util.Random;
-
 public class Main {
     public static void main(String[] args) {
         // TESTANDO LEITURA DE ARQUIVOS (apagar depois)
@@ -27,7 +25,7 @@ public class Main {
         // TESTANDO JOGADOR (apagar depois)
         Jogador jogador = new Jogador("Lari", 1, 0);
         System.out.println(jogador);
-        Pokemon starter = jogo.getPokedex().get(1);
+        Pokemon starter = jogo.getPokedex().get(0);
         jogador.escolherPokemonInicial(starter.clone(50));
         jogador.aumentarExperiencia(500);
         System.out.println(jogador);
