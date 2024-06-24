@@ -1,4 +1,4 @@
-package application;
+package application.batalha;
 
 import application.jogador.Jogador;
 import application.pokemon.Pokemon;
