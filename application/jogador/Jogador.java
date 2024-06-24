@@ -63,7 +63,9 @@ public class Jogador extends Personagem {
     }
     
     public void curarPokemons() {
-        // Implementar
+        for(Pokemon pokemon : equipePokemon.getEquipe()) {
+            pokemon.curar();
+        }
     }
 
     public void gerenciarPokemons(Scanner scanner, Jogo jogo) {
@@ -110,10 +112,6 @@ public class Jogador extends Personagem {
                     }
                     if (equipePokemon.getEquipe().size() == 1) {
                         System.out.println("Você não pode remover o único pokémon da equipe.");
-                        break;
-                    }
-                    if(equipePokemon.getEquipe().size() == this.pokemonsCapturados.size()) {
-                        System.out.println("Não há pokémons para serem removidos.");
                         break;
                     }
                     System.out.println("Escolha um pokémon da equipe para remover:");

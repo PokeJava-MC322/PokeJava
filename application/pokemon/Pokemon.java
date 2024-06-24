@@ -85,6 +85,11 @@ public class Pokemon implements Cloneable {
         return dano;
     }
 
+    // Cura a vida maxima do pokemon
+    public void curar() {
+        this.hpAtual = this.hpMax;
+    }
+
     @Override
     public String toString() {
         return String.format("%s LVL[%d] HP[%d/%d] (Tipo %s)", this.nome, this.nivel, this.hpAtual, this.hpMax, this.tipoPokemon);

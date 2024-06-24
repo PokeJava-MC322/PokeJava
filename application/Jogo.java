@@ -165,7 +165,8 @@ public final class Jogo {
             System.out.println("***********************");
             System.out.println("1. Batalhar");
             System.out.println("2. Editar Equipe Pokémon");
-            System.out.println("3. Sair do Jogo");
+            System.out.println("3. Centro Pokémon");
+            System.out.println("4. Sair do Jogo");
     
             System.out.print("\n" + "Digite o número correspondente à ação desejada: ");
             if (scanner.hasNextInt()) {
@@ -187,6 +188,11 @@ public final class Jogo {
                         jogador.gerenciarPokemons(scanner, this);
                         break;
                     case 3:
+                        System.out.println("Centro Pokémon");
+                        jogador.curarPokemons();
+                        System.out.println("Pokémons curados.");
+                        break;
+                    case 4:
                         System.out.println("Saindo do Jogo");
                         jogoEmAndamento = false;
                         break;
