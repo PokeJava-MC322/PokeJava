@@ -26,7 +26,7 @@ public class Inventario {
         for(Item item : this.itens)
             if(nome == item.getNome())
                 return item;
-        return null;
+        return new NullItem();
     }
 
     /**
@@ -39,7 +39,7 @@ public class Inventario {
      */
     public boolean adicionarItem(String nome, Jogo jogo, int quantidade) {
         Item item = acessarItem(nome);
-        if(item != null) {
+        if(!(item instanceof NullItem)) {
             item.setQuantidade(item.getQuantidade() + quantidade);
             return true;
         }
@@ -71,7 +71,7 @@ public class Inventario {
      */
     public boolean removerItem(String nome) {
         Item item = acessarItem(nome);
-        if(item == null)
+        if(item instanceof NullItem)
             return false;
         int index = this.itens.indexOf(item);
         this.itens.remove(index);
