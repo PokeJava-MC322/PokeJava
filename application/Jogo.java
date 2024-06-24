@@ -144,11 +144,11 @@ public final class Jogo {
     public void loopDeJogo() {
         Scanner scanner = new Scanner(System.in);
     
-        System.out.print("Digite o nome do Jogador: ");
+        System.out.print("\n" + "Digite o nome do Jogador: ");
         String nomeJogador = scanner.nextLine();
         Jogador jogador = new Jogador(nomeJogador, 1, 0);
     
-        // Escolher pokémon inicial
+        jogador.escolherPokemonInicial(instancia);
 
         // Menu Inicial
         boolean jogoEmAndamento = true;
@@ -168,5 +168,4 @@ public final class Jogo {
     
         scanner.close();
     }
-    
 }
