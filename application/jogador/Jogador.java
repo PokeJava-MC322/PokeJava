@@ -40,7 +40,6 @@ public class Jogador extends Personagem {
         // Implementar
     }
 
-    // IMPRESSÃO
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -48,15 +47,20 @@ public class Jogador extends Personagem {
               .append("Nome: ").append(super.getNome()).append("\n")
               .append("Nível: ").append(super.getNivel()).append("\n")
               .append("Experiência: ").append(super.getExperiencia()).append(" / 1000\n\n");
-
-        result.append("POKÉMONS CAPTURADOS\n");
-        for (Pokemon pokemon : pokemonsCapturados) {
-            result.append(pokemon.toString()).append("\n");
+    
+        if (!pokemonsCapturados.isEmpty()) {
+            result.append("POKÉMONS CAPTURADOS\n");
+            for (Pokemon pokemon : pokemonsCapturados) {
+                result.append(pokemon.toString()).append("\n");
+            }
+            result.append("\n");
         }
-        result.append("\n");
-
-        result.append(equipePokemon.toString()).append("\n");
-
+    
+        if (!equipePokemon.getEquipe().isEmpty()) {
+            result.append("EQUIPE POKÉMON\n")
+                  .append(equipePokemon.toString()).append("\n");
+        }
+    
         return result.toString();
     }
 }

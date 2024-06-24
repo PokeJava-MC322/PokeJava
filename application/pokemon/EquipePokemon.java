@@ -73,7 +73,6 @@ public class EquipePokemon {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append("EQUIPE POKÉMON\n");
         for (Pokemon pokemon : equipe) {
             result.append(pokemon.toString()).append("\n");
         }
