@@ -2,7 +2,7 @@ package application.itens;
 
 import application.pokemon.Pokemon;
 
-public class Pocao extends Item implements Comparable<Pocao> {
+public class Pocao extends Item implements Comparable<Pocao>, ItemStrategy {
     private int cura;
 
     public Pocao(String nome, int cura) {
@@ -21,7 +21,12 @@ public class Pocao extends Item implements Comparable<Pocao> {
      * Cura o pokemón aliado e diminui em 1 a quantidade do item
      * @param alvo Pokemon aliado alvo da cura
      */
+<<<<<<< HEAD
     public boolean usarItem(Pokemon alvo) {
+=======
+    @Override
+    public void usarItem(Pokemon alvo) {
+>>>>>>> origin/batalha-vitor
         if(this.quantidade <= 0)
             return false;
         alvo.setHP(Math.min(alvo.getHPMax(), alvo.getHP() + this.cura));

@@ -4,7 +4,7 @@ import application.pokemon.Pokemon;
 
 import java.util.Random;
 
-public class Pokebola extends Item implements Comparable<Pokebola> {
+public class Pokebola extends Item implements Comparable<Pokebola>, ItemStrategy {
     private int chanceCaptura; // [%], 0 a 100 para pokemon com vida cheia
 
     public Pokebola(String nome, int chanceCaptura) {
@@ -26,7 +26,12 @@ public class Pokebola extends Item implements Comparable<Pokebola> {
      * <p>Quando %HP do pokémon inimigo tende a 1, a chance de captura é igual a chance de captura da pokebola
      * @param alvo Pokemon inimigo alvo da captura
      */
+<<<<<<< HEAD
     public boolean usarItem(Pokemon alvo) {
+=======
+    @Override
+    public void usarItem(Pokemon alvo) {
+>>>>>>> origin/batalha-vitor
         if(this.quantidade <= 0)
             return false;
         Random rand = new Random();

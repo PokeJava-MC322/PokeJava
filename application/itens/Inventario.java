@@ -22,11 +22,13 @@ public class Inventario {
      * @param nome String com o nome do item a ser encontrado
      * @return {@code Item} Se o item for encontrado, {@code null} Se o item não for encontrado
      */
-    public Item acessarItem(String nome) {
-        for(Item item : this.itens)
-            if(nome == item.getNome())
+    public Item acessarItem(String nome) throws InvalidItemException {
+        for (Item item : this.itens) {
+            if (nome.equals(item.getNome())) {
                 return item;
-        return null;
+            }
+        }
+        throw new InvalidItemException("Item " + nome + " não encontrado.");
     }
 
     /**
@@ -38,26 +40,28 @@ public class Inventario {
      * @return {@code true} Se o item for adicionado, {@code false} se o item não existir (nem no inventário nem no jogo)
      */
     public boolean adicionarItem(String nome, Jogo jogo, int quantidade) {
-        Item item = acessarItem(nome);
-        if(item != null) {
-            item.setQuantidade(item.getQuantidade() + quantidade);
-            return true;
-        }
-
-        // Item não encontrado, pode ser item novo no inventário ou item inexistente
-        for(Pokebola pokebola : jogo.getPokebolas()) { // Procura se é uma pokebola do jogo
-            if(pokebola.getNome() == nome) {
-                Pokebola pokebolaNova = new Pokebola(pokebola.getNome(), pokebola.getChanceCaptura(), quantidade);
-                this.itens.add(pokebolaNova);
+        try {
+            Item item = acessarItem(nome);
+            if (!(item instanceof NullItem)) {
+                item.setQuantidade(item.getQuantidade() + quantidade);
                 return true;
             }
-        }
-        // Não é uma pokebola
-        for(Pocao pocao : jogo.getPocoes()) { // Procura se é uma poção existente
-            if(pocao.getNome() == nome) {
-                Pocao pocaoNova = new Pocao(pocao.getNome(), pocao.getCura(), quantidade);
-                this.itens.add(pocaoNova);
-                return true;
+        } catch (InvalidItemException e) {
+            // Item não encontrado, pode ser item novo no inventário ou item inexistente
+            for (Pokebola pokebola : jogo.getPokebolas()) { // Procura se é uma pokebola do jogo
+                if (pokebola.getNome().equals(nome)) {
+                    Pokebola pokebolaNova = new Pokebola(pokebola.getNome(), pokebola.getChanceCaptura(), quantidade);
+                    this.itens.add(pokebolaNova);
+                    return true;
+                }
+            }
+            // Não é uma pokebola
+            for (Pocao pocao : jogo.getPocoes()) { // Procura se é uma poção existente
+                if (pocao.getNome().equals(nome)) {
+                    Pocao pocaoNova = new Pocao(pocao.getNome(), pocao.getCura(), quantidade);
+                    this.itens.add(pocaoNova);
+                    return true;
+                }
             }
         }
 
@@ -70,12 +74,18 @@ public class Inventario {
      * @return {@code true} Se o item foi encontrado e removido, {@code false} caso item não seja encontrado
      */
     public boolean removerItem(String nome) {
-        Item item = acessarItem(nome);
-        if(item == null)
+        try {
+            Item item = acessarItem(nome);
+            if (item instanceof NullItem) {
+                return false;
+            }
+            int index = this.itens.indexOf(item);
+            this.itens.remove(index);
+            return true;
+        } catch (InvalidItemException e) {
+            System.out.println(e.getMessage());
             return false;
-        int index = this.itens.indexOf(item);
-        this.itens.remove(index);
-        return true;
+        }
     }
 
     public void listarItens() {
