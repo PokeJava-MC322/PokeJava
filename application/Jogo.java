@@ -179,7 +179,7 @@ public final class Jogo {
                         }
                         break;
                     case 2:
-                        System.out.println(jogador);
+                        jogador.gerenciarPokemons(scanner, this);
                         break;
                     case 3:
                         System.out.println("Saindo do Jogo");

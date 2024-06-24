@@ -66,6 +66,55 @@ public class Jogador extends Personagem {
         // Implementar
     }
 
+    public void gerenciarPokemons(Scanner scanner, Jogo jogo) {
+        boolean gerenciarPokemons = true;
+        while (gerenciarPokemons) {
+            System.out.println("\n" + "***********************");
+            System.out.println("     Meus Pokémons");
+            System.out.println("***********************");
+            System.out.println("1. Ver Pokémons Capturados");
+            System.out.println("2. Ver Minha Equipe Pokémon");
+            System.out.println("3. Remover Pokémon da Minha Equipe");
+            System.out.println("4. Adicionar Pokémon à Minha Equipe");
+            System.out.println("5. Voltar ao Menu Inicial");
+
+            System.out.print("\n" + "Digite o número correspondente à ação desejada: ");
+            int escolhaMeusPokemons = 0;
+            if (scanner.hasNextInt()) {
+                escolhaMeusPokemons = scanner.nextInt();
+            } else {
+                System.out.println("Entrada inválida. Por favor, digite um número.");
+                scanner.next();
+                continue;
+            }
+
+            switch (escolhaMeusPokemons) {
+                case 1:
+                    System.out.println("Ver Pokémons Capturados");
+                    // Implementar lógica para visualizar pokémons capturados
+                    break;
+                case 2:
+                    System.out.println("Ver Minha Equipe Pokémon");
+                    // Implementar lógica para visualizar a equipe Pokémon
+                    break;
+                case 3:
+                    System.out.println("Remover Pokémon da Minha Equipe");
+                    // Implementar lógica para remover Pokémon da equipe
+                    break;
+                case 4:
+                    System.out.println("Adicionar Pokémon à Minha Equipe");
+                    // Implementar lógica para adicionar Pokémon à equipe
+                    break;
+                case 5:
+                    gerenciarPokemons = false; // Volta ao menu inicial
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
