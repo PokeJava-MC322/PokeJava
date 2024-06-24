@@ -1,5 +1,7 @@
 package application.itens;
 
+import application.pokemon.Pokemon;
+
 public class NullItem extends Item {
     public NullItem() {
         this.nome = "NULL";
@@ -18,4 +20,9 @@ public class NullItem extends Item {
 
     @Override
     public void setQuantidade(int quantidade) {}
+
+    @Override
+    public boolean usarItem(Pokemon alvo) {
+        return false;
+    }
 }
