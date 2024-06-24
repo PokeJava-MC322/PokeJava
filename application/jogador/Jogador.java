@@ -90,12 +90,16 @@ public class Jogador extends Personagem {
 
             switch (escolhaMeusPokemons) {
                 case 1:
-                    System.out.println("Ver Pokémons Capturados");
-                    // Implementar lógica para visualizar pokémons capturados
+                    System.out.println("\n" + "Pokémons Capturados:");
+                    for (Pokemon pokemon : pokemonsCapturados) {
+                        System.out.println("- " + pokemon);
+                    }
                     break;
                 case 2:
-                    System.out.println("Ver Minha Equipe Pokémon");
-                    // Implementar lógica para visualizar a equipe Pokémon
+                    System.out.println("\n" + "Minha Equipe Pokémon:");
+                    for (Pokemon pokemon : equipePokemon.getEquipe()) {
+                        System.out.println("- " + pokemon);
+                    }
                     break;
                 case 3:
                     System.out.println("Remover Pokémon da Minha Equipe");
@@ -106,7 +110,7 @@ public class Jogador extends Personagem {
                     // Implementar lógica para adicionar Pokémon à equipe
                     break;
                 case 5:
-                    gerenciarPokemons = false; // Volta ao menu inicial
+                    gerenciarPokemons = false;
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
