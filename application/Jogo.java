@@ -148,24 +148,42 @@ public final class Jogo {
         String nomeJogador = scanner.nextLine();
         Jogador jogador = new Jogador(nomeJogador, 1, 0);
     
-        jogador.escolherPokemonInicial(instancia);
-
-        // Menu Inicial
+        jogador.escolherPokemonInicial(instancia, scanner);
+    
         boolean jogoEmAndamento = true;
         while (jogoEmAndamento) {
-            // Editar Equipe Pokémon
-                // Lista dos Pokémons Capturados
-                // Lista da Equipe Pokémon Atual
-                // Remover Pokémon da Equipe
-                // Adicionar Pokémon na Equipe
-            // Batalhar
-                // Atacar
-                // Usar Item
-                // Trocar o Pokémon Ativo
-            // Sair do Jogo
-            jogoEmAndamento = false;
+            System.out.println("\n" + "***********************");
+            System.out.println("     Menu Inicial");
+            System.out.println("***********************");
+            System.out.println("1. Editar Equipe Pokémon");
+            System.out.println("2. Batalhar");
+            System.out.println("3. Sair do Jogo");
+    
+            System.out.print("\n" + "Digite o número correspondente à ação desejada: ");
+            if (scanner.hasNextInt()) {
+                int escolha = scanner.nextInt();
+    
+                switch (escolha) {
+                    case 1:
+                        System.out.println("Editando Equipe Pokémon");
+                        break;
+                    case 2:
+                        System.out.println("Batalhando");
+                        break;
+                    case 3:
+                        System.out.println("Saindo do Jogo");
+                        jogoEmAndamento = false;
+                        break;
+                    default:
+                        System.out.println("Opção inválida, tente novamente.");
+                        break;
+                }
+            } else {
+                System.out.println("Entrada inválida. Por favor, digite um número.");
+                scanner.next();
+            }
         }
     
         scanner.close();
-    }
+    }    
 }

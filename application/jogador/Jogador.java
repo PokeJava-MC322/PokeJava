@@ -33,9 +33,7 @@ public class Jogador extends Personagem {
         System.out.println(pokemon.getNome() + " foi capturado.");
     }
 
-    public void escolherPokemonInicial(Jogo jogo) {
-        Scanner scanner = new Scanner(System.in);
-    
+    public void escolherPokemonInicial(Jogo jogo, Scanner scanner) {
         System.out.println("\n" + "Escolha seu Pokémon inicial!");
         for (int i = 0; i < 3; i++) {
             Pokemon pokemon = jogo.getPokedex().get(new int[]{1, 4, 7}[i]); // Acesso direto aos índices 1, 4 e 7
@@ -45,16 +43,23 @@ public class Jogador extends Personagem {
         int escolha;
         do {
             System.out.print("\n" + "Digite o número correspondente ao Pokémon que você deseja: ");
-            escolha = scanner.nextInt();
+            if (scanner.hasNextInt()) {
+                escolha = scanner.nextInt();
+                if (escolha < 1 || escolha > 3) {
+                    System.out.println("Opção inválida. Tente novamente.");
+                }
+            } else {
+                System.out.println("Entrada inválida. Por favor, digite um número.");
+                scanner.next();
+                escolha = 0;
+            }
         } while (escolha < 1 || escolha > 3);
     
         Pokemon pokemonInicial = jogo.getPokedex().get(new int[]{1, 4, 7}[escolha - 1]).clone(1); // Clona o Pokémon escolhido com nível 1
         this.equipePokemon.setPokemonAtivo(pokemonInicial);
         this.pokemonsCapturados.add(pokemonInicial);
+    }
     
-        scanner.close();
-    }    
-
     public void curarPokemons() {
         // Implementar
     }
