@@ -3,11 +3,13 @@ package application.batalha;
 import application.jogador.Jogador;
 import application.pokemon.Pokemon;
 import application.itens.Pokebola;
+import application.itens.InvalidItemException;
+import application.itens.Item;
 import application.itens.Pocao;
 import java.util.Scanner;
 
 public class Batalha {
-    public static Resultado batalharContraPokemonSelvagem(Pokemon pokemonSelvagem, Jogador jogador) {
+    public static Resultado batalharContraPokemonSelvagem(Pokemon pokemonSelvagem, Jogador jogador) throws InvalidItemException {
         int turno = 1;
         // loop de batalha 
         Scanner scanner = new Scanner(System.in);
@@ -33,16 +35,17 @@ public class Batalha {
                         do {
                             System.out.println("Escolha um item:");
                             jogador.getInventario().listarItens();
-                            String item = scanner.next();
-                            if (jogador.getInventario().acessarItem(item) != null) {
-                                if (jogador.getInventario().acessarItem(item) instanceof Pocao) {
-                                    jogador.getInventario().acessarItem(item).usarItem(jogador.getEquipePokemon().getPokemonAtivo());
-                                    System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getNome() + " foi curado.");
-                                    itemInvalido = 0;
-                                } else if (jogador.getInventario().acessarItem(item) instanceof Pokebola) {
-                                    jogador.getInventario().acessarItem(item).usarItem(pokemonSelvagem);
-                                    
-                                }
+                            String itemName = scanner.next();
+                            Item item = jogador.getInventario().acessarItem(itemName);
+                            if (item instanceof Pocao) {
+                                Pocao pocao = (Pocao) item;
+                                pocao.usarItem(jogador.getEquipePokemon().getPokemonAtivo());
+                                System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getNome() + " foi curado.");
+                                itemInvalido = 0;
+                            } else if (item instanceof Pokebola) {
+                                Pokebola pokebola = (Pokebola) item;
+                                pokebola.usarItem(pokemonSelvagem);
+                                itemInvalido = 0;
                             } else {
                                 System.out.println("Item inválido.");
                             }
