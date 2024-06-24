@@ -11,5 +11,5 @@ public abstract class Item {
 
     public void setQuantidade(int quantidade) { this.quantidade = quantidade; }
     
-    public abstract void usarItem(Pokemon alvo);
+    public abstract boolean usarItem(Pokemon alvo);
 }

@@ -35,19 +35,15 @@ public class Main {
         jogador.capturarPokemon(poke1);
         jogador.capturarPokemon(poke2);
         jogador.getEquipePokemon().adicionarPokemon(poke1);
+        jogador.getEquipePokemon().setPokemonAtivo(poke1);
 
-        System.out.println(jogador);
-
-        Pokemon inimigo = jogo.gerarPokemonVerificado(jogador, 5);
-        System.out.printf("%s VS %s!\n", poke1, inimigo);
-        System.out.printf("%s atacou %s e causou %d de dano! ", poke1.getNome(), inimigo.getNome(), poke1.atacar(inimigo));
-        System.out.println(poke1.getTipoPokemon().stringEfetividade(inimigo.getTipoPokemon()));
-        System.out.println("Inimigo: " + inimigo);
+        jogador.getInventario().adicionarItem("Poção", jogo, 5);
+        jogador.getInventario().adicionarItem("Ultra ball", jogo, 5);
+        jogador.getInventario().listarItens();
 
 
         Pokemon selvPokemon = jogo.gerarPokemonVerificado(jogador, 5);
         Resultado resultado = Batalha.batalharContraPokemonSelvagem(selvPokemon, jogador);
-
         System.out.println("Resultado: " + resultado);
 
     }
