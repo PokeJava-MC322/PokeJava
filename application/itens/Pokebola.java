@@ -27,9 +27,9 @@ public class Pokebola extends Item implements Comparable<Pokebola>, ItemStrategy
      * @param alvo Pokemon inimigo alvo da captura
      */
     @Override
-    public void usarItem(Pokemon alvo) {
+    public boolean usarItem(Pokemon alvo) {
         if(this.quantidade <= 0)
-            return;
+            return false;
         Random rand = new Random();
         int chancePokebola = rand.nextInt(100);
 
@@ -37,12 +37,15 @@ public class Pokebola extends Item implements Comparable<Pokebola>, ItemStrategy
         double chance = (1 - hpRatio)*this.chanceCaptura + this.chanceCaptura; // chanceCaptura se %HP -> 100%, 2*chanceCaptura se %HP -> 0%
         if(chance >= chancePokebola) {
             // Captura
+            System.out.println(alvo.getNome() + " foi capturado!");
+            this.quantidade = this.quantidade - 1;
+            return true;
         } else {
             // Não captura
+            System.out.println(alvo.getNome() + " escapou!");
+            this.quantidade = this.quantidade - 1;
+            return false;
         }
-
-        this.quantidade = this.quantidade - 1;
-        return;
     }
 
     @Override

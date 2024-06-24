@@ -22,13 +22,13 @@ public class Pocao extends Item implements Comparable<Pocao>, ItemStrategy {
      * @param alvo Pokemon aliado alvo da cura
      */
     @Override
-    public void usarItem(Pokemon alvo) {
+    public boolean usarItem(Pokemon alvo) {
         if(this.quantidade <= 0)
-            return;
+            return false;
         alvo.setHP(Math.min(alvo.getHPMax(), alvo.getHP() + this.cura));
 
         this.quantidade = this.quantidade - 1;
-        return;
+        return true;
     }
 
     @Override
