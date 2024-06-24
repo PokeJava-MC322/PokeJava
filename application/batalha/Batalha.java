@@ -15,8 +15,12 @@ public class Batalha {
         // loop de batalha 
         //Scanner scanner = new Scanner(System.in);
         while (true) {
+            
             // turno do jogador
             if (turno % 2 == 1) {
+                // Imprime as informações dos pokemons em batalha
+                System.out.println("Pokémon do jogador: " + jogador.getEquipePokemon().getPokemonAtivo().toString());
+                System.out.println("Pokémon selvagem: " + pokemonSelvagem.toString());
                 System.out.println("Escollha uma ação:");
                 System.out.println("1 - Atacar");
                 System.out.println("2 - Usar item");
@@ -32,36 +36,37 @@ public class Batalha {
                         }
                         break;
                     case(2):
-                        int itemInvalido = 1;
                         if (jogador.getInventario().getItens().isEmpty()) {
                             System.out.println("Inventário vazio.");
                             // adiciona um turno para nao pular a vez do jogador
                             turno++;
                             break;
                         }
-                        do {
-                            System.out.println("Escolha um item:");
-                            jogador.getInventario().listarItens();
-                            String item = scanner.next();
-                            try {
-                                if (jogador.getInventario().acessarItem(item) != null) {
-                                    if (jogador.getInventario().acessarItem(item) instanceof Pocao) {
-                                        jogador.getInventario().acessarItem(item).usarItem(jogador.getEquipePokemon().getPokemonAtivo());
-                                        System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getNome() + " foi curado.");
-                                        itemInvalido = 0;
-                                    } else if (jogador.getInventario().acessarItem(item) instanceof Pokebola) {
-                                        if (jogador.getInventario().acessarItem(item).usarItem(pokemonSelvagem)) {
-                                            jogador.capturarPokemon(pokemonSelvagem);
-                                            return Resultado.CAPTURA;
-                                        }
+                        System.out.println("Escolha um item:");
+                        jogador.getInventario().listarItens();
+                        String item = scanner.next();
+                        try {
+                            if (jogador.getInventario().acessarItem(item) != null) {
+                                if (jogador.getInventario().acessarItem(item) instanceof Pocao) {
+                                    jogador.getInventario().acessarItem(item).usarItem(jogador.getEquipePokemon().getPokemonAtivo());
+                                    System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getNome() + " foi curado.");
+                                    break;
+                                } else if (jogador.getInventario().acessarItem(item) instanceof Pokebola) {
+                                    if (jogador.getInventario().acessarItem(item).usarItem(pokemonSelvagem)) {
+                                        jogador.capturarPokemon(pokemonSelvagem);
+                                        return Resultado.CAPTURA;
                                     }
-                                } else {
-                                    System.out.println("Item inválido.");
+                                    else break;
                                 }
-                            } catch (InvalidItemException e) {
-                                System.out.println("Item inválido.");
                             }
-                        } while (itemInvalido == 1);
+                        } catch (InvalidItemException e) {
+                            System.out.println("Item inválido.");
+                            // Apagar depois
+                            System.out.println("item: " + item);
+                            // Incrementa o contador de turno para não pular a vez do jogador
+                            turno++;
+                            break;
+                        }
                     case (3):
                         // Trocar pokémon
                         int pokemonInvalido = 1;
@@ -88,9 +93,9 @@ public class Batalha {
             }
             // turno do pokemon selvagem
             else {
-                System.out.println("Turno de" + pokemonSelvagem.getNome() );
+                System.out.println("Turno de " + pokemonSelvagem.getNome() );
                 //System.out.println(pokemonSelvagem.getNome() + "causou" + pokemonSelvagem.atacar(jogador.getEquipePokemon().getPokemonAtivo()) + "de dano!");
-                System.out.printf("%s atacou %s e causou %d de dano! ", pokemonSelvagem.getNome(), jogador.getEquipePokemon().getPokemonAtivo().getNome(), pokemonSelvagem.atacar(jogador.getEquipePokemon().getPokemonAtivo()));
+                System.out.println( pokemonSelvagem.getNome() + " atacou " + jogador.getEquipePokemon().getPokemonAtivo().getNome() + " e causou " + pokemonSelvagem.atacar(jogador.getEquipePokemon().getPokemonAtivo()) +" de dano!" );
                 // Caso o pokémon do jogador seja derrotado
                 if (jogador.getEquipePokemon().getPokemonAtivo().getHP() == 0) {
                     System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getNome() + " foi derrotado.");

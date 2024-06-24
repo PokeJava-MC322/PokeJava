@@ -152,6 +152,11 @@ public final class Jogo {
         Jogador jogador = new Jogador(nomeJogador, 1, 0);
     
         jogador.escolherPokemonInicial(instancia, scanner);
+
+        // Inicializa o inventário do jogador com 5 pokébolas e 5 poções
+        jogador.getInventario().adicionarItem("Pokeball", instancia, 5);
+        jogador.getInventario().adicionarItem("Potion", instancia, 5);
+
     
         boolean jogoEmAndamento = true;
         while (jogoEmAndamento) {

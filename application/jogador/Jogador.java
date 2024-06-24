@@ -104,10 +104,65 @@ public class Jogador extends Personagem {
                 case 3:
                     System.out.println("Remover Pokémon da Minha Equipe");
                     // Implementar lógica para remover Pokémon da equipe
+                    if (equipePokemon.getEquipe().isEmpty()) {
+                        System.out.println("Sua equipe está vazia.");
+                        break;
+                    }
+                    if (equipePokemon.getEquipe().size() == 1) {
+                        System.out.println("Você não pode remover o único pokémon da equipe.");
+                        break;
+                    }
+                    if(equipePokemon.getEquipe().size() == this.pokemonsCapturados.size()) {
+                        System.out.println("Não há pokémons para serem removidos.");
+                        break;
+                    }
+                    System.out.println("Escolha um pokémon da equipe para remover:");
+                    for (Pokemon pokemon : equipePokemon.getEquipe()) {
+                        System.out.println("- " + pokemon);
+                    }
+                    System.out.println("Digite o nome do pokémon que deseja remover da equipe:");
+                    String nomePokemon = scanner.next();
+                    for (Pokemon pokemon : equipePokemon.getEquipe()) {
+                        if (pokemon.getNome().equals(nomePokemon)) {                                
+                            equipePokemon.removerPokemon(pokemon);
+                            System.out.println(pokemon.getNome() + " foi removido da equipe.");
+                            break;
+                        }
+                    }
+                    System.out.println(nomePokemon + " não está na equipe.");
                     break;
                 case 4:
                     System.out.println("Adicionar Pokémon à Minha Equipe");
                     // Implementar lógica para adicionar Pokémon à equipe
+                    if (pokemonsCapturados.size() == 1 || pokemonsCapturados.size() == equipePokemon.getEquipe().size()) {
+                        System.out.println("Você não tem pokémons para serem adicionados.");
+                        break;
+                    }
+                    if (equipePokemon.getEquipe().size() >= equipePokemon.getTamanhoDaEquipe()) {
+                        System.out.println("Sua equipe está cheia.");
+                        break;
+                    }
+                    
+                    System.out.println("Escolha um pokémon capturado para adicionar à equipe:");
+                    for (Pokemon pokemon : this.getPokemonsCapturados()) {
+                        System.out.println("- " + pokemon);
+                    }
+                        System.out.println("Digite o nome do pokémon que deseja adicionar à equipe:");
+                        String namePokemon = scanner.next();
+                        for (Pokemon pokemon : pokemonsCapturados) {
+                            if (pokemon.getNome().equals(namePokemon)) {
+                                if (equipePokemon.getEquipe().contains(pokemon)) {
+                                    System.out.println(pokemon.getNome() + " já está na equipe.");
+                                    break;
+                                }
+                                else {
+                                    equipePokemon.adicionarPokemon(pokemon);
+                                    System.out.println(pokemon.getNome() + " foi adicionado à equipe.");
+                                break;
+                                }
+                            }
+                        }
+                        System.out.println(namePokemon + " não está na lista de pokémons capturados.");
                     break;
                 case 5:
                     gerenciarPokemons = false;
