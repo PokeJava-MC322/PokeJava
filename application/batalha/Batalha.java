@@ -100,16 +100,16 @@ public class Batalha {
                 if (jogador.getEquipePokemon().getPokemonAtivo().getHP() == 0) {
                     System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getNome() + " foi derrotado.");
                     // Percorre a lista de pokémons do jogador procurando algum que não esteja desmaiado
-                    int pokemonsDesmaiados = 0;
+                    int pokemonsVivos = 0;
                     for (Pokemon pokemon : jogador.getEquipePokemon().getEquipe()) {
                         if (pokemon.getHP() > 0) {
+                            pokemonsVivos++;
                             jogador.getEquipePokemon().setPokemonAtivo(pokemon);
-                            pokemonsDesmaiados++;
                             break;
                         }
                     }
                     // Caso todos os pokémons do jogador estejam desmaiados
-                    if (pokemonsDesmaiados == 0) {
+                    if (pokemonsVivos == 0) {
                         System.out.println("Todos os pokémons do jogador foram derrotados.");
                         return Resultado.DERROTA;
                     }
