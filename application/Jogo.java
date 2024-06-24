@@ -7,6 +7,7 @@ import application.itens.Pocao;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public final class Jogo {
     // ATRIBUTOS
@@ -139,4 +140,33 @@ public final class Jogo {
         }
         return pokemon;
     }
+
+    public void loopDeJogo() {
+        Scanner scanner = new Scanner(System.in);
+    
+        System.out.print("Digite o nome do Jogador: ");
+        String nomeJogador = scanner.nextLine();
+        Jogador jogador = new Jogador(nomeJogador, 1, 0);
+    
+        // Escolher pokémon inicial
+
+        // Menu Inicial
+        boolean jogoEmAndamento = true;
+        while (jogoEmAndamento) {
+            // Editar Equipe Pokémon
+                // Lista dos Pokémons Capturados
+                // Lista da Equipe Pokémon Atual
+                // Remover Pokémon da Equipe
+                // Adicionar Pokémon na Equipe
+            // Batalhar
+                // Atacar
+                // Usar Item
+                // Trocar o Pokémon Ativo
+            // Sair do Jogo
+            jogoEmAndamento = false;
+        }
+    
+        scanner.close();
+    }
+    
 }
