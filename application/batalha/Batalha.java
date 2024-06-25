@@ -32,6 +32,11 @@ public class Batalha {
                         System.out.printf("\n" + "%s atacou %s e causou %d de dano! ", jogador.getEquipePokemon().getPokemonAtivo().getNome(), pokemonSelvagem.getNome(), jogador.getEquipePokemon().getPokemonAtivo().atacar(pokemonSelvagem));
                         if (pokemonSelvagem.getHP() == 0) {
                             System.out.println(pokemonSelvagem.getNome() + " foi derrotado.");
+                            // Aumenta a quantidade de xp do pokemon atual
+                            if (jogador.getEquipePokemon().getPokemonAtivo().ganharXP(pokemonSelvagem.getNivel() * 150)) {
+                                // Retorna o resultado 'Evolucao'
+                                return Resultado.EVOLUCAO;
+                            }
                             return Resultado.VITORIA;
                         }
                         break;
@@ -54,6 +59,8 @@ public class Batalha {
                                 } else if (jogador.getInventario().acessarItem(item) instanceof Pokebola) {
                                     if (jogador.getInventario().acessarItem(item).usarItem(pokemonSelvagem)) {
                                         jogador.capturarPokemon(pokemonSelvagem);
+                                        // O jogador ganha XP com a captura de um pokémon selvagem
+                                        jogador.getEquipePokemon().getPokemonAtivo().ganharXP(pokemonSelvagem.getNivel() * 100);
                                         return Resultado.CAPTURA;
                                     }
                                     else break;
@@ -71,9 +78,9 @@ public class Batalha {
                         // Trocar pokémon
                         int pokemonInvalido = 1;
                         do {
+                            // Imprime a lista de pokemons da equipe que possuem hp maior que zero
+                            System.out.println("\n" + "Equipe do jogador:");
                             for (Pokemon pokemon : jogador.getEquipePokemon().getEquipe()) {
-                                // Imprime a lista de pokemons da equipe que possuem hp maior que zero
-                                System.out.println("\n" + "Equipe do jogador:");
                                 if (pokemon.getHP() > 0) {
                                     System.out.println("- " + pokemon.getNome());
                                 }

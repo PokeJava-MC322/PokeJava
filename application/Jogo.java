@@ -101,9 +101,6 @@ public final class Jogo {
         if(pokemon.getNivel() < pokemon.getNivelMin()) {
             if(pokemon.getPreEvolucaoID() == null)
                 return null; // Pokemon com nível abaixo do mínimo e sem pré-evolução
-            System.out.println(pokemon.getID() + " Pré-evolucaoID: " + pokemon.getPreEvolucaoID());
-            if(pokemon.getPreEvolucaoID() != null)
-                System.out.println("nao é null???");
             System.out.println(pokemon.getNivel());
             pokemon = gerarPokemon(Integer.valueOf(pokemon.getPreEvolucaoID()), pokemon.getNivel());
             return verificaPokemon(pokemon);
@@ -126,33 +123,43 @@ public final class Jogo {
         Random rand = new Random();
         int item = rand.nextInt(100);
         if (item == 0) {
-            jogador.getInventario().adicionarItem("Master ball", instancia, 1);
-            System.out.println("Master ball adicionada ao inventário.");
+            jogador.getInventario().adicionarItem("Masterball", instancia, 1);
+            System.out.println("Masterball adicionada ao inventário.");
         } 
         else if (item <= 10){
-            jogador.getInventario().adicionarItem("Ultra ball", instancia, 1);
-            System.out.println("Ultra ball adicionada ao inventário.");
+            jogador.getInventario().adicionarItem("Ultraball", instancia, 1);
+            System.out.println("Ultraball adicionada ao inventário.");
         }
         else if (item <= 30) {
-            jogador.getInventario().adicionarItem("Great ball", instancia, 1);
-            System.out.println("Great ball adicionada ao inventário.");
+            jogador.getInventario().adicionarItem("Greatball", instancia, 1);
+            System.out.println("Greatball adicionada ao inventário.");
         }
         else if (item <= 55) {
             jogador.getInventario().adicionarItem("Pokeball", instancia, 1);
             System.out.println("Pokeball adicionada ao inventário.");
         }
         else if (item <= 65) {
-            jogador.getInventario().adicionarItem("Hyper Potion", instancia, 1);
-            System.out.println("Hyper Potion adicionada ao inventário.");
+            jogador.getInventario().adicionarItem("Hyperpotion", instancia, 1);
+            System.out.println("Hyperpotion adicionada ao inventário.");
         }
         else if (item <= 80){
-            jogador.getInventario().adicionarItem("Super Potion", instancia, 1);
-            System.out.println("Super Potion adicionada ao inventário.");
+            jogador.getInventario().adicionarItem("Superpotion", instancia, 1);
+            System.out.println("Superpotion adicionada ao inventário.");
         }
         else {
             jogador.getInventario().adicionarItem("Potion", instancia, 1);
             System.out.println("Potion adicionada ao inventário.");
         }
+    }
+
+    // Cria uma nova instancia de pokemon com base no ID
+    // Devolve o pokémon evoluído
+    public Pokemon evoluirPokemon(Pokemon pokemon) {
+        Integer newEvolucaoID = Integer.valueOf(pokemon.getEvolucaoID());
+        // Busca pelo pokemon com essa ID
+        Pokemon evolucao = instancia.gerarPokemon(newEvolucaoID, pokemon.getNivel());
+        evolucao.setXP(pokemon.getXP());
+        return evolucao;
     }
 
     /**
@@ -218,6 +225,16 @@ public final class Jogo {
                             gerarItemAleatorio(jogador);
                         } else if (resultado == Resultado.CAPTURA) {
                             System.out.println("Você capturou o pokémon selvagem.");
+                        } else if (resultado == Resultado.EVOLUCAO) {
+                            Pokemon pokemonEvoluido = instancia.evoluirPokemon(jogador.getEquipePokemon().getPokemonAtivo());
+                            System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getNome() + " evoluiu para " + pokemonEvoluido.getNome() + "!");
+                            // Remove o pokémon antigo e adiciona o novo
+                            jogador.capturarPokemonEvolucao(pokemonEvoluido);
+                            pokemonEvoluido.setXP(jogador.getEquipePokemon().getPokemonAtivo().getXP());
+                            jogador.getEquipePokemon().adicionarPokemonEvolucao(pokemonEvoluido);
+                            jogador.removerPokemonListaCapturados(jogador.getEquipePokemon().getPokemonAtivo());
+                            jogador.getEquipePokemon().removerPokemonEvolucao(jogador.getEquipePokemon().getPokemonAtivo());
+                            jogador.getEquipePokemon().setPokemonAtivo(pokemonEvoluido);
                         }
                         break;
                     case 2:

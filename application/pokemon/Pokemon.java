@@ -5,7 +5,7 @@ public class Pokemon implements Cloneable {
     private final TipoPokemon tipoPokemon;
     private final String preEvolucaoID, evolucaoID;
     private final int nivelMin, nivelMax, hpBase, atkBase;
-    private int nivel;
+    private int nivel, xp;
     private int hpAtual, hpMax;
 
     // CONSTRUTOR
@@ -20,6 +20,20 @@ public class Pokemon implements Cloneable {
         this.nivelMax = nivelMax;
         this.hpBase = hpBase;
         this.atkBase = atkBase;
+        this.xp = 0;
+    }
+    public Pokemon(String ID, String nome, TipoPokemon tipoPokemon, String preEvolucaoID, String evolucaoID,
+                    int nivelMin, int nivelMax, int hpBase, int atkBase, int xp) {
+        this.ID = ID;
+        this.nome = nome;
+        this.tipoPokemon = tipoPokemon;
+        this.preEvolucaoID = preEvolucaoID;
+        this.evolucaoID = evolucaoID;
+        this.nivelMin = nivelMin;
+        this.nivelMax = nivelMax;
+        this.hpBase = hpBase;
+        this.atkBase = atkBase;
+        this.xp = xp;
     }
     public Pokemon() {
         this.ID = "0000";
@@ -55,6 +69,7 @@ public class Pokemon implements Cloneable {
     public int getNivel() { return this.nivel; }
     public int getHP() { return this.hpAtual; }
     public int getHPMax() { return this.hpMax; }
+    public int getXP() { return this.xp; }
     protected int getHPBase() { return this.hpBase; }
     protected int getATKBase() { return this.atkBase; }
 
@@ -65,6 +80,7 @@ public class Pokemon implements Cloneable {
 
     public void setHP(int hp) { this.hpAtual = hp; }
     public void setHPMax(int hpMax) { this.hpMax = hpMax; }
+    public void setXP(int xp) { this.xp = xp; }
 
     // MÉTODOS
     /**
@@ -83,6 +99,25 @@ public class Pokemon implements Cloneable {
         this.hpAtual = this.hpMax;
     }
 
+    // Aumenta o XP do pokemon
+    // Retorna true caso o pokemon tenha atingido o nivel maximo
+    // Retorna false caso contrario
+    public boolean ganharXP(int xp) {
+        this.xp += xp;
+        System.out.println(this.nome + " ganhou " + xp + " de XP!");
+        if (this.xp >= 500 + nivel*100 && this.nivel < this.nivelMax) {
+            this.xp -= 500 + nivel*100;
+            this.nivel++;
+            this.hpMax = this.hpBase + this.nivel;
+            this.hpAtual = this.hpMax;
+            System.out.println(this.nome + " subiu para o nível " + this.nivel + "!");
+        }
+        if (this.nivel >= this.nivelMax && this.getEvolucaoID() != "NULL") {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return String.format("%s LVL[%d] HP[%d/%d] (Tipo %s)", this.nome, this.nivel, this.hpAtual, this.hpMax, this.tipoPokemon);
@@ -99,4 +134,5 @@ public class Pokemon implements Cloneable {
         pokemonNovo.setHP(pokemonNovo.getHPMax());
         return pokemonNovo;
     }
+
 }

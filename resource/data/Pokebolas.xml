@@ -1,14 +1,14 @@
 <Pokebolas>
 	<Pokebola>
-		<nome>Master ball</nome>
+		<nome>Masterball</nome>
 		<chanceCaptura>100</chanceCaptura>
 	</Pokebola>
 	<Pokebola>
-		<nome>Ultra ball</nome>
+		<nome>Ultraball</nome>
 		<chanceCaptura>60</chanceCaptura>
 	</Pokebola>
 	<Pokebola>
-		<nome>Great ball</nome>
+		<nome>Greatball</nome>
 		<chanceCaptura>40</chanceCaptura>
 	</Pokebola>
 	<Pokebola>

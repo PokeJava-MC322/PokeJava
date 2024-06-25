@@ -33,6 +33,10 @@ public class Jogador extends Personagem {
         System.out.println(pokemon.getNome() + " foi capturado.");
     }
 
+    public void capturarPokemonEvolucao(Pokemon pokemon) {
+        pokemonsCapturados.add(pokemon);
+    }
+
     public void escolherPokemonInicial(Jogo jogo, Scanner scanner) {
         System.out.println("\n" + "Escolha seu Pokémon inicial!");
 
@@ -66,6 +70,11 @@ public class Jogador extends Personagem {
         for(Pokemon pokemon : equipePokemon.getEquipe()) {
             pokemon.curar();
         }
+    }
+
+    // Remove um Pokemon da lista de Capturados
+    public void removerPokemonListaCapturados(Pokemon pokemon) {
+        pokemonsCapturados.remove(pokemon);
     }
 
     public void gerenciarPokemons(Scanner scanner, Jogo jogo) {

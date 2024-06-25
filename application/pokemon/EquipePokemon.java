@@ -53,6 +53,12 @@ public class EquipePokemon {
         }
     }
 
+    // Função que adiciona um pokemon à equipe, mas sem imprimir mensagem
+    // Utilizada para adicionar pokemons evoluídos
+    public void adicionarPokemonEvolucao(Pokemon pokemon) {
+        equipe.add(pokemon);
+    }
+
     public void removerPokemon(Pokemon pokemon) {
         if (equipe.contains(pokemon)) {
             equipe.remove(pokemon);
@@ -67,6 +73,12 @@ public class EquipePokemon {
         } else {
             System.out.println("O Pokémon não está na equipe.");
         }
+    }
+
+    // Função que remove um pokemon da equipe, mas sem imprimir mensagem
+    // Utilizada para remover pokemons evoluídos
+    public void removerPokemonEvolucao(Pokemon pokemon) {
+        equipe.remove(pokemon);
     }
 
     // IMPRESSÃO
