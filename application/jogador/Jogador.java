@@ -37,8 +37,8 @@ public class Jogador extends Personagem {
 
         int[] ids = {1, 4, 7};
         for (int i = 0; i < ids.length; i++) {
-            Pokemon pokemon = jogo.gerarPokemon(ids[i], 1);
-            System.out.println((i + 1) + ". " + pokemon);
+            Pokemon pokemon = jogo.gerarPokemon(ids[i], 5);
+            System.out.printf("%d - %s (Tipo %s)\n", i+1, pokemon.getNome(), pokemon.getTipoPokemon());
         }
     
         int escolha;
@@ -56,7 +56,7 @@ public class Jogador extends Personagem {
             }
         } while (escolha < 1 || escolha > 3);
     
-        Pokemon pokemonInicial = jogo.getPokedex().get(new int[]{1, 4, 7}[escolha - 1]).clone(1); // Clona o Pokémon escolhido com nível 1
+        Pokemon pokemonInicial = jogo.getPokedex().get(new int[]{1, 4, 7}[escolha - 1]).clone(5); // Clona o Pokémon escolhido com nível 1
         this.equipePokemon.setPokemonAtivo(pokemonInicial);
         this.pokemonsCapturados.add(pokemonInicial);
     }

@@ -41,8 +41,9 @@ public final class Jogo {
     }
 
     /**
-     * <p>Gera um número aleatório entre Média-Delta e Média+Delta, mínimo 1 e máximo 99
+     * <p>Gera um número aleatório entre Média-n*Delta e Média+n*Delta, mínimo 1 e máximo 99
      * <p>Média = média do nível dos pokémons da equipe
+     * <p>n = n° de pokémons na equipe
      * 
      * @param jogador {@code Jogador} jogador que os pokémons serão usados como base
      * @param delta {@code int} variação do nível em relação ao nível médio dos pokémons do jogador
@@ -61,7 +62,7 @@ public final class Jogo {
 
         // Gera pokémon aleatório
         Random rand = new Random();
-        int nivel = (media-delta) + rand.nextInt(2*delta);
+        int nivel = (media-n*delta) + rand.nextInt(2*n*delta);
         nivel = Math.max(1, nivel);
         nivel = Math.min(99, nivel);
         return nivel;
@@ -101,7 +102,6 @@ public final class Jogo {
         if(pokemon.getNivel() < pokemon.getNivelMin()) {
             if(pokemon.getPreEvolucaoID() == null)
                 return null; // Pokemon com nível abaixo do mínimo e sem pré-evolução
-            System.out.println(pokemon.getNivel());
             pokemon = gerarPokemon(Integer.valueOf(pokemon.getPreEvolucaoID()), pokemon.getNivel());
             return verificaPokemon(pokemon);
         }
@@ -109,8 +109,6 @@ public final class Jogo {
         if(pokemon.getNivel() > pokemon.getNivelMax()) {
             if(pokemon.getEvolucaoID() == null)
                 return null; // Pokemon com nível acima do máximo e sem evolução
-            System.out.println("evolucaoID: " + pokemon.getEvolucaoID());
-            System.out.println(pokemon.getNivel());
             pokemon = gerarPokemon(Integer.valueOf(pokemon.getEvolucaoID()), pokemon.getNivel());
             return verificaPokemon(pokemon);
         }
