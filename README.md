@@ -1,2 +1,2 @@
 # PokeJava
-Projeto Final para a disciplina de MC322 (Programação Orientada a Objetos) do 2° semestre de 2024 na UNICAMP
+Projeto Final para a disciplina de MC322 (Programação Orientada a Objetos) do 1° semestre de 2024 na UNICAMP
