@@ -1,8 +1,6 @@
 package application.itens;
 import application.pokemon.Pokemon;
 
-import application.pokemon.Pokemon;
-
 public abstract class Item {
     protected String nome;
     protected int quantidade;

@@ -2,7 +2,6 @@ package application;
 
 import application.itens.InvalidItemException;
 import application.leituraArquivos.*;
-import application.batalha.*;
 
 public class Main {
     public static void main(String[] args) throws InvalidItemException {
