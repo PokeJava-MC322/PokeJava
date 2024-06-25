@@ -61,10 +61,9 @@ public final class Jogo {
 
         // Gera pokémon aleatório
         Random rand = new Random();
-        int nivel = (media-delta) + rand.nextInt(media+delta);
+        int nivel = (media-delta) + rand.nextInt(2*delta);
         nivel = Math.max(1, nivel);
         nivel = Math.min(99, nivel);
-        System.out.printf("Média %d, Nivel gerado %d\n", media, nivel);
         return nivel;
     }
 
