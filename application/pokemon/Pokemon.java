@@ -60,13 +60,6 @@ public class Pokemon implements Cloneable {
 
     // SETTERS
     public void setNivel(int nivel) {
-        try {
-            if (nivel < this.nivelMin || nivel > this.nivelMax) {
-                throw new InvalidPokemonLevelException("Nível " + nivel + " é inválido para o Pokémon " + this.nome);
-            }
-        } catch (InvalidPokemonLevelException e) {
-            nivel = nivel < this.nivelMin ? this.nivelMin : this.nivelMax;
-        }
         this.nivel = nivel;
     }
 
