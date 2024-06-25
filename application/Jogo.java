@@ -102,10 +102,6 @@ public final class Jogo {
         if(pokemon.getNivel() < pokemon.getNivelMin()) {
             if(pokemon.getPreEvolucaoID() == null)
                 return null; // Pokemon com nível abaixo do mínimo e sem pré-evolução
-            System.out.println(pokemon.getID() + " Pré-evolucaoID: " + pokemon.getPreEvolucaoID());
-            if(pokemon.getPreEvolucaoID() != null)
-                System.out.println("nao é null???");
-            System.out.println(pokemon.getNivel());
             pokemon = gerarPokemon(Integer.valueOf(pokemon.getPreEvolucaoID()), pokemon.getNivel());
             return verificaPokemon(pokemon);
         }
@@ -113,8 +109,6 @@ public final class Jogo {
         if(pokemon.getNivel() > pokemon.getNivelMax()) {
             if(pokemon.getEvolucaoID() == null)
                 return null; // Pokemon com nível acima do máximo e sem evolução
-            System.out.println("evolucaoID: " + pokemon.getEvolucaoID());
-            System.out.println(pokemon.getNivel());
             pokemon = gerarPokemon(Integer.valueOf(pokemon.getEvolucaoID()), pokemon.getNivel());
             return verificaPokemon(pokemon);
         }
