@@ -213,7 +213,7 @@ public final class Jogo {
     
                 switch (escolha) {
                     case 1:
-                        Resultado resultado = Batalha.batalharContraPokemonSelvagem(gerarPokemonVerificado(jogador, 5), jogador, scanner);
+                        Resultado resultado = Batalha.batalharContraPokemonSelvagem(gerarPokemonVerificado(jogador, 3), jogador, scanner);
                         if (resultado == Resultado.DERROTA) {
                             System.out.println("Você foi derrotado.");
                             jogoEmAndamento = false;
