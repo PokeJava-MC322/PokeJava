@@ -21,6 +21,7 @@ public class Pocao extends Item implements Comparable<Pocao>, ItemStrategy {
      * Cura o pokemón aliado e diminui em 1 a quantidade do item
      * @param alvo Pokemon aliado alvo da cura
      */
+    @Override
     public boolean usarItem(Pokemon alvo) {
         if(this.quantidade <= 0)
             return false;
@@ -32,7 +33,7 @@ public class Pocao extends Item implements Comparable<Pocao>, ItemStrategy {
 
     @Override
     public String toString() {
-        return String.format("%s[%d] +%d HP", this.nome, this.quantidade, this.cura);
+        return String.format("%s QTD[%d] +%dHP", this.nome, this.quantidade, this.cura);
     }
 
     @Override

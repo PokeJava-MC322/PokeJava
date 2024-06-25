@@ -89,8 +89,8 @@ public class Inventario {
     }
 
     public void listarItens() {
-        this.itens.sort(null);
-        System.out.println("Itens no inventário:");
+        //this.itens.sort(null);
+        System.out.println("\n" + "Inventário do Jogador:");
         for(Item item : this.itens) {
             System.out.println("- " + item);
         }

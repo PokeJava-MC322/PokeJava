@@ -32,7 +32,7 @@ public class EquipePokemon {
         if (equipe.isEmpty()) {
             equipe.add(novoPokemonAtivo);
             this.pokemonAtivo = novoPokemonAtivo;
-            System.out.println(novoPokemonAtivo.getNome() + " foi adicionado à equipe");
+            System.out.println("\n" + novoPokemonAtivo.getNome() + " foi adicionado à equipe.");
         } else {
             if (equipe.contains(novoPokemonAtivo)) {
                 this.pokemonAtivo = novoPokemonAtivo;
@@ -47,7 +47,7 @@ public class EquipePokemon {
     public void adicionarPokemon(Pokemon pokemon) {
         if (equipe.size() < tamanhoDaEquipe) {
             equipe.add(pokemon);
-            System.out.println(pokemon.getNome() + " foi adicionado à equipe.");
+            System.out.println("/n" + pokemon.getNome() + " foi adicionado à equipe.");
         } else {
             System.out.println("A equipe já está cheia.");
         }
