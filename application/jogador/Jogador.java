@@ -57,7 +57,7 @@ public class Jogador extends Personagem {
             }
         } while (escolha < 1 || escolha > 3);
     
-        Pokemon pokemonInicial = jogo.getPokedex().get(new int[]{1, 4, 7}[escolha - 1]).clone(1); // Clona o Pokémon escolhido com nível 1
+        Pokemon pokemonInicial = jogo.getPokedex().get(new int[]{1, 4, 7}[escolha - 1]).clone(5); // Clona o Pokémon escolhido com nível 1
         this.equipePokemon.setPokemonAtivo(pokemonInicial);
         this.pokemonsCapturados.add(pokemonInicial);
     }
