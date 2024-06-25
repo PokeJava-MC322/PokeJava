@@ -30,11 +30,6 @@ public class Jogador extends Personagem {
     // MÉTODOS
     public void capturarPokemon(Pokemon pokemon) {
         pokemonsCapturados.add(pokemon);
-        System.out.println(pokemon.getNome() + " foi capturado.");
-    }
-
-    public void capturarPokemonEvolucao(Pokemon pokemon) {
-        pokemonsCapturados.add(pokemon);
     }
 
     public void escolherPokemonInicial(Jogo jogo, Scanner scanner) {
@@ -154,22 +149,24 @@ public class Jogador extends Personagem {
                     for (Pokemon pokemon : this.getPokemonsCapturados()) {
                         System.out.println("- " + pokemon);
                     }
-                        System.out.println("Digite o nome do pokémon que deseja adicionar à equipe:");
-                        String namePokemon = scanner.next();
-                        for (Pokemon pokemon : pokemonsCapturados) {
-                            if (pokemon.getNome().equals(namePokemon)) {
-                                if (equipePokemon.getEquipe().contains(pokemon)) {
-                                    System.out.println(pokemon.getNome() + " já está na equipe.");
-                                    break;
-                                }
-                                else {
-                                    equipePokemon.adicionarPokemon(pokemon);
-                                    System.out.println(pokemon.getNome() + " foi adicionado à equipe.");
+                    System.out.println("Digite o nome do pokémon que deseja adicionar à equipe:");
+                    String namePokemon = scanner.next();
+                    int adicionado = 0;
+                    for (Pokemon pokemon : pokemonsCapturados) {
+                        if (pokemon.getNome().equals(namePokemon)) {
+                            if (equipePokemon.getEquipe().contains(pokemon)) {
+                                System.out.println(pokemon.getNome() + " já está na equipe.");
+                                adicionado = 1;
                                 break;
-                                }
+                            }
+                            else {
+                                equipePokemon.adicionarPokemon(pokemon);
+                                adicionado = 1;
+                                break;
                             }
                         }
-                        System.out.println(namePokemon + " não está na lista de pokémons capturados.");
+                    }
+                    if (adicionado == 0) System.out.println(namePokemon + " não está na lista de pokémons capturados.");
                     break;
                 case 5:
                     gerenciarPokemons = false;

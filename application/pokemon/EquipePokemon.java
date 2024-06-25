@@ -47,7 +47,7 @@ public class EquipePokemon {
     public void adicionarPokemon(Pokemon pokemon) {
         if (equipe.size() < tamanhoDaEquipe) {
             equipe.add(pokemon);
-            System.out.println("/n" + pokemon.getNome() + " foi adicionado à equipe.");
+            System.out.println("\n" + pokemon.getNome() + " foi adicionado à equipe.");
         } else {
             System.out.println("A equipe já está cheia.");
         }

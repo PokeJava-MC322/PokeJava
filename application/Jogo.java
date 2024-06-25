@@ -229,7 +229,7 @@ public final class Jogo {
                             Pokemon pokemonEvoluido = instancia.evoluirPokemon(jogador.getEquipePokemon().getPokemonAtivo());
                             System.out.println(jogador.getEquipePokemon().getPokemonAtivo().getNome() + " evoluiu para " + pokemonEvoluido.getNome() + "!");
                             // Remove o pokémon antigo e adiciona o novo
-                            jogador.capturarPokemonEvolucao(pokemonEvoluido);
+                            jogador.capturarPokemon(pokemonEvoluido);
                             pokemonEvoluido.setXP(jogador.getEquipePokemon().getPokemonAtivo().getXP());
                             jogador.getEquipePokemon().adicionarPokemonEvolucao(pokemonEvoluido);
                             jogador.removerPokemonListaCapturados(jogador.getEquipePokemon().getPokemonAtivo());
